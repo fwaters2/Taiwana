@@ -15,14 +15,22 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Map from "@material-ui/icons/Map";
-import AccessTime from '@material-ui/icons/AccessTime';
-import Place from '@material-ui/icons/Place';
-import Group from '@material-ui/icons/Group';
-import Info from '@material-ui/icons/Info';
-import School from '@material-ui/icons/School';
-import Home from '@material-ui/icons/Home';
+import {
+  Map,
+  AccessTime,
+  Place,
+  Group,
+  Info,
+  School,
+  Home,
+  AttachMoney,
+  BeachAccess,
+  DirectionsBoat,
+  LiveHelp
+} from "@material-ui/icons";
+
 import Router from "../Router";
+import { FormControlLabel, Switch, Container } from "@material-ui/core";
 
 const drawerWidth = 240;
 
@@ -79,13 +87,23 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  title: {
+    flexGrow: 1
   }
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const {
+    currentPage,
+    changePage,
+    currentLang,
+    langStrings,
+    toggleLang
+  } = props;
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -114,6 +132,19 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            {langStrings[currentPage]}
+          </Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={currentLang === "ch"}
+                onChange={toggleLang}
+                color="secondary"
+              />
+            }
+            label="中文"
+          />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -126,7 +157,7 @@ export default function PersistentDrawerLeft() {
         }}
       >
         <div className={classes.drawerHeader}>
-            <Typography>Taiwana 2019</Typography>
+          <Typography>{langStrings.Taiwana} 2019</Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
@@ -136,50 +167,81 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-         <List>
-         <ListItem button key="Home">
-              <ListItemIcon>
-                <Home />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button key="Squads">
-              <ListItemIcon>
-                <Group />
-              </ListItemIcon>
-              <ListItemText primary="Squads" />
-            </ListItem>
-            <ListItem button key="Schedule">
-              <ListItemIcon>
-                <AccessTime />
-              </ListItemIcon>
-              <ListItemText primary="Schedule" />
-            </ListItem>
-            <ListItem button key="Location">
-              <ListItemIcon>
-                <Place />
-              </ListItemIcon>
-              <ListItemText primary="Location" />
-            </ListItem>
-            <ListItem button key="How To Play">
-              <ListItemIcon>
-                <School />
-              </ListItemIcon>
-              <ListItemText primary="How To Play" />
-            </ListItem>
-            <ListItem button key="About">
-              <ListItemIcon>
-                <Info />
-              </ListItemIcon>
-              <ListItemText primary="About" />
-            </ListItem>
-            <Divider />
-            <ListItem button key="Map">
-              <ListItemIcon>
-                <Map />
-              </ListItemIcon>
-              <ListItemText primary="Map" />
-            </ListItem>
+        <List>
+          <ListItem button onClick={() => changePage("Home")} key="Home">
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Home} />
+          </ListItem>
+          <ListItem button onClick={() => changePage("Squads")} key="Squads">
+            <ListItemIcon>
+              <Group />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Squads} />
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => changePage("HowToPlay")}
+            key="How To Play"
+          >
+            <ListItemIcon>
+              <School />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.HowToPlay} />
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => changePage("Schedule")}
+            key="Schedule"
+          >
+            <ListItemIcon>
+              <AccessTime />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Schedule} />
+          </ListItem>
+          <ListItem
+            button
+            onClick={() => changePage("Location")}
+            key="Location"
+          >
+            <ListItemIcon>
+              <Place />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Location} />
+          </ListItem>
+          <ListItem button onClick={() => changePage("Transportation")} key="Transportation">
+            <ListItemIcon>
+              <DirectionsBoat />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Transportation} />
+          </ListItem>
+          
+          <ListItem button onClick={() => changePage("FAQ")} key="FAQ">
+            <ListItemIcon>
+              <LiveHelp />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.FAQ} />
+          </ListItem>
+          <Divider />
+          <ListItem button onClick={() => changePage("Map")} key="Map">
+            <ListItemIcon>
+              <Map />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.Map} />
+          </ListItem>
+          <ListItem button onClick={() => changePage("WhatToBring")} key="WhatToBring">
+            <ListItemIcon>
+              <BeachAccess />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.WhatToBring} />
+          </ListItem>
+          <ListItem button onClick={() => changePage("AboutUs")} key="AboutUs">
+            <ListItemIcon>
+              <Info />
+            </ListItemIcon>
+            <ListItemText primary={langStrings.AboutUs} />
+          </ListItem>
         </List>
       </Drawer>
       <main
@@ -188,7 +250,13 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Router />
+        <Container maxWidth="md">
+          <Router
+            langStrings={langStrings}
+            currentPage={currentPage}
+            changePage={changePage}
+          />
+        </Container>
       </main>
     </div>
   );
