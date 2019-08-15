@@ -10,7 +10,6 @@ import Place from "@material-ui/icons/Place";
 import Group from "@material-ui/icons/Group";
 import Info from "@material-ui/icons/Info";
 import School from "@material-ui/icons/School";
-import HomeImage from "../Assets/Tourney2.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +30,6 @@ export default function InteractiveList(props) {
 
   return (
     <div className={classes.root}>
-      <img width="100%" src={HomeImage} alt="Home" />
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <div className={classes.demo}>
