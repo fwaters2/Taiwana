@@ -1,4 +1,5 @@
 import React from "react";
+import HomeImage from "../Assets/Tourney2.png";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -10,11 +11,11 @@ import Place from "@material-ui/icons/Place";
 import Group from "@material-ui/icons/Group";
 import Info from "@material-ui/icons/Info";
 import School from "@material-ui/icons/School";
+import Container from "@material-ui/core/Container"
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    maxWidth: 752
   },
   demo: {
     backgroundColor: theme.palette.background.paper
@@ -29,9 +30,15 @@ export default function InteractiveList(props) {
   const { langStrings, changePage } = props;
 
   return (
+    
+    <div style={{width:"100vw"}}>
+      <Container maxWidth="md" style={{padding:"0"}}>
+      <img width="100%" src={HomeImage} alt="Home" />
+      </Container>
+      <Container maxWidth="md">
     <div className={classes.root}>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12}>
           <div className={classes.demo}>
             <List dense>
               <ListItem button onClick={() => changePage("Squads")}>
@@ -84,5 +91,8 @@ export default function InteractiveList(props) {
         </Grid>
       </Grid>
     </div>
+    </Container>
+    </div>
+    
   );
 }

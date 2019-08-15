@@ -1,5 +1,5 @@
 import React from "react";
-import HomeImage from "../Assets/Tourney2.png";
+
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
     width: drawerWidth
@@ -60,9 +60,8 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     justifyContent: "space-between"
   },
-  homeHeader: {
-    display: "flex",
-    ...theme.mixins.toolbar
+  headerSpace:{ 
+    ...theme.mixins.toolbar,
   },
   title: {
     flexGrow: 1
@@ -102,7 +101,7 @@ export default function PersistentDrawerLeft(props) {
   function handleDrawerClose() {
     setOpen(false);
   }
-  function handleClick(page){
+  function handleClick(page) {
     changePage(page);
     handleDrawerClose();
   }
@@ -166,7 +165,7 @@ export default function PersistentDrawerLeft(props) {
           {mainPages.map(page => (
             <ListItem
               button
-              onClick={()=>handleClick(page.key)}
+              onClick={() => handleClick(page.key)}
               key={page.key}
             >
               <ListItemIcon>{page.icon}</ListItemIcon>
@@ -178,7 +177,7 @@ export default function PersistentDrawerLeft(props) {
           {extraPages.map(page => (
             <ListItem
               button
-              onClick={()=>handleClick(page.key)}
+              onClick={() => handleClick(page.key)}
               key={page.key}
             >
               <ListItemIcon>{page.icon}</ListItemIcon>
@@ -187,28 +186,17 @@ export default function PersistentDrawerLeft(props) {
           ))}
         </List>
       </Drawer>
-
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: open
         })}
       >
-        {currentPage === "Home" ? (
-          <div>
-            <div className={classes.drawerHeader} />
-            <img width="100%" src={HomeImage} alt="Home" />{" "}
-          </div>
-        ) : (
-          <div className={classes.drawerHeader} />
-        )}
-
-        <Container maxWidth="md">
-          <Router
-            langStrings={langStrings}
-            currentPage={currentPage}
-            changePage={changePage}
-          />
-        </Container>
+      <div className={classes.headerSpace} />
+      <Router
+        langStrings={langStrings}
+        currentPage={currentPage}
+        changePage={changePage}
+      />
       </main>
     </div>
   );

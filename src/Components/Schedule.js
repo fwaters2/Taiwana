@@ -12,7 +12,8 @@ import {
 export default function Schedule(props) {
   const { langStrings } = props;
   return (
-    <Container>
+    <div style={{width:"100vw"}}> 
+    <Container maxWidth='sm'>
       <Typography variant="h6" align="center">
         {langStrings.SubjectToChange}
       </Typography>
@@ -50,5 +51,6 @@ export default function Schedule(props) {
         team up with Squads "D" and "E"
       </Typography>
     </Container>
+    </div>
   );
 }

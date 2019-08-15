@@ -4,7 +4,8 @@ import { Typography, Container, ListItem, List, ListItemText } from "@material-u
 export default function FAQ(props) {
   const {langStrings} = props
   return (
-    <Container>
+    <div style={{width:"100vw"}}>
+    <Container maxWidth="sm">
     <List>
       {langStrings.Questions.map(question=>(
         <ListItem divider key={question.Q}>
@@ -16,5 +17,6 @@ export default function FAQ(props) {
       {langStrings.NewQuestion}<a href="https://www.facebook.com/events/2573581996020331/">{langStrings.Here}</a>
     </Typography>
     </Container>
+    </div>
   );
 }

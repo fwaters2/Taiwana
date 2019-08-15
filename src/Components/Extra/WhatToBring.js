@@ -10,11 +10,13 @@ export default function WhatToBring() {
     "Any special food or drink you'd like. However, there is a bar and night market right next to the fields"
   ];
   return (
-      <Container>
+    <div style={{width:"100vw"}}>
+    <Container maxWidth="sm">
     {listItems.map(item=>(
 <Typography paragraph>{item}</Typography>
     )
     )}
     </Container>
+    </div>
   );
 }

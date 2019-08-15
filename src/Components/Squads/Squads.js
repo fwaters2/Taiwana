@@ -12,7 +12,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AddButton from "./AddButton";
 import ConstructionDialogue from "./ConstructionDialogue";
-import { Tabs, Tab, Box } from "@material-ui/core";
+import { Tabs, Tab, Box, Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,6 +71,8 @@ export default function InteractiveList(props) {
     setOpen(false);
   };
   return (
+    <div style={{width:"100vw"}}>
+      <Container style={{padding:"0"}}>
     <div className={classes.root}>
       <ConstructionDialogue open={open} onClose={handleClose} />
 
@@ -143,6 +145,8 @@ export default function InteractiveList(props) {
       >
         <Box p={3}>Nothing Yet</Box>
       </Typography>
+    </div>
+    </Container>
     </div>
   );
 }
