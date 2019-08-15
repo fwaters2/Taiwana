@@ -1,20 +1,22 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import List from "@material-ui/core/List";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  Drawer,
+  CssBaseline,
+  AppBar,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import {
   Map,
   AccessTime,
@@ -28,7 +30,6 @@ import {
   DirectionsBoat,
   LiveHelp
 } from "@material-ui/icons";
-
 import Router from "../Router";
 import { FormControlLabel, Switch, Container } from "@material-ui/core";
 
@@ -104,6 +105,20 @@ export default function PersistentDrawerLeft(props) {
     langStrings,
     toggleLang
   } = props;
+  const mainPages = [
+    { key: "Home", icon: <Home /> },
+    { key: "Squads", icon: <Group /> },
+    { key: "HowToPlay", icon: <School /> },
+    { key: "Schedule", icon: <AccessTime /> },
+    { key: "Location", icon: <Place /> },
+    { key: "Transportation", icon: <DirectionsBoat /> },
+    { key: "FAQ", icon: <LiveHelp /> }
+  ];
+  const extraPages = [
+    { key: "Map", icon: <Map /> },
+    { key: "WhatToBring", icon: <BeachAccess /> },
+    { key: "AboutUs", icon: <Info /> }
+  ];
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -111,6 +126,11 @@ export default function PersistentDrawerLeft(props) {
 
   function handleDrawerClose() {
     setOpen(false);
+  }
+  function handleClick(e) {
+    let page = e.currentTarget.getAttribute("data-key");
+    changePage(page);
+    handleDrawerClose();
   }
 
   return (
@@ -168,80 +188,30 @@ export default function PersistentDrawerLeft(props) {
         </div>
         <Divider />
         <List>
-          <ListItem button onClick={() => changePage("Home")} key="Home">
-            <ListItemIcon>
-              <Home />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Home} />
-          </ListItem>
-          <ListItem button onClick={() => changePage("Squads")} key="Squads">
-            <ListItemIcon>
-              <Group />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Squads} />
-          </ListItem>
-          <ListItem
-            button
-            onClick={() => changePage("HowToPlay")}
-            key="How To Play"
-          >
-            <ListItemIcon>
-              <School />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.HowToPlay} />
-          </ListItem>
-          <ListItem
-            button
-            onClick={() => changePage("Schedule")}
-            key="Schedule"
-          >
-            <ListItemIcon>
-              <AccessTime />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Schedule} />
-          </ListItem>
-          <ListItem
-            button
-            onClick={() => changePage("Location")}
-            key="Location"
-          >
-            <ListItemIcon>
-              <Place />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Location} />
-          </ListItem>
-          <ListItem button onClick={() => changePage("Transportation")} key="Transportation">
-            <ListItemIcon>
-              <DirectionsBoat />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Transportation} />
-          </ListItem>
-          
-          <ListItem button onClick={() => changePage("FAQ")} key="FAQ">
-            <ListItemIcon>
-              <LiveHelp />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.FAQ} />
-          </ListItem>
+          {mainPages.map(page => (
+            <ListItem
+              button
+              onClick={handleClick}
+              key={page.key}
+              data-key={page.key}
+            >
+              <ListItemIcon>{page.icon}</ListItemIcon>
+              <ListItemText primary={langStrings[page.key]} />
+            </ListItem>
+          ))}
+
           <Divider />
-          <ListItem button onClick={() => changePage("Map")} key="Map">
-            <ListItemIcon>
-              <Map />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.Map} />
-          </ListItem>
-          <ListItem button onClick={() => changePage("WhatToBring")} key="WhatToBring">
-            <ListItemIcon>
-              <BeachAccess />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.WhatToBring} />
-          </ListItem>
-          <ListItem button onClick={() => changePage("AboutUs")} key="AboutUs">
-            <ListItemIcon>
-              <Info />
-            </ListItemIcon>
-            <ListItemText primary={langStrings.AboutUs} />
-          </ListItem>
+          {extraPages.map(page => (
+            <ListItem
+              button
+              onClick={handleClick}
+              key={page.key}
+              data-key={page.key}
+            >
+              <ListItemIcon>{page.icon}</ListItemIcon>
+              <ListItemText primary={langStrings[page.key]} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <main
