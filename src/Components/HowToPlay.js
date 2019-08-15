@@ -24,11 +24,12 @@ export default function HowToPlay(props) {
       <Container maxWidth="md">
       <Divider />
 
-      <Typography paragraph align="center">
+      <Typography variant="body1" align="center">
         Basic rules: No running with the disc, and score in the touchdown area
         by passing to your teammates!
       </Typography>
-      <Typography variant="h6" align="center">
+      <Divider />
+      <Typography variant="body1" align="center">
         Some new beach rules for the amateurs/proficients:
       </Typography>
       <List>
