@@ -9,6 +9,7 @@ import HowToPlay from "./Components/HowToPlay";
 import Schedule from "./Components/Schedule";
 import WhatToBring from "./Components/Extra/WhatToBring";
 import AboutUs from "./Components/Extra/AboutUs";
+import Register from "./Components/Register/Register";
 
 export default function Router(props) {
   const { currentPage, langStrings, changePage } = props;
@@ -16,7 +17,7 @@ export default function Router(props) {
     case "Home":
       return <Home langStrings={langStrings} changePage={changePage} />;
     case "Squads":
-      return <Squads langStrings={langStrings} />;
+      return <Squads langStrings={langStrings} changePage={changePage}/>;
     case "Schedule":
       return <Schedule langStrings={langStrings} />;
     case "Location":
@@ -33,7 +34,8 @@ export default function Router(props) {
       return <WhatToBring />;
     case "AboutUs":
       return <AboutUs />;
-
+    case "Register":
+      return <Register />;
     default:
       return <div>Broken</div>;
   }

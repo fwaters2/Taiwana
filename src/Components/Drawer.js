@@ -26,13 +26,12 @@ import {
   Info,
   School,
   Home,
-  AttachMoney,
   BeachAccess,
   DirectionsBoat,
   LiveHelp
 } from "@material-ui/icons";
 import Router from "../Router";
-import { FormControlLabel, Switch, Container } from "@material-ui/core";
+import { FormControlLabel, Switch } from "@material-ui/core";
 
 const drawerWidth = 240;
 

@@ -65,7 +65,7 @@ const useStyles = makeStyles(theme => ({
 export default function InteractiveList(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
-  const { langStrings } = props;
+  const { langStrings, changePage } = props;
 
   const handleClose = value => {
     setOpen(false);
@@ -82,7 +82,7 @@ export default function InteractiveList(props) {
    
 
             value={0}
-            //onChange={handleChange}
+            onChange={()=>changePage("Register")}
             aria-label="simple tabs example"
           >
             <Tab

@@ -6,13 +6,10 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
-import AccessTime from "@material-ui/icons/AccessTime";
-import Place from "@material-ui/icons/Place";
-import Group from "@material-ui/icons/Group";
 import Info from "@material-ui/icons/Info";
-import School from "@material-ui/icons/School";
+
 import Container from "@material-ui/core/Container"
-import { Mood, SentimentSatisfied, SentimentVerySatisfied } from "@material-ui/icons";
+import { SentimentVerySatisfied } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +33,7 @@ const strings= [
 
 export default function InteractiveList(props) {
   const classes = useStyles();
-  const { langStrings, changePage } = props;
+  const { changePage } = props;
 
   return (
     
