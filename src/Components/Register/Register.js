@@ -169,7 +169,7 @@ export default function Register(props) {
               </Button>
             </ButtonGroup>
             <ShortsDialog open={open} onClose={handleClose} />
-            <ReqDialog open={openReq} onClose={handleCloseReq} />
+            <ReqDialog changePage={changePage} open={openReq} onClose={handleCloseReq} />
             <TextField
             autoFocus
               inputProps={{

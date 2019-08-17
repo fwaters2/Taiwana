@@ -1,9 +1,9 @@
 import React from "react";
-import { Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
+import { Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, ListItemIcon, Button } from "@material-ui/core";
 import { Wc, AccessibilityNew } from "@material-ui/icons";
 
 export default function ReqDialog(props) {
-  const { onClose, open } = props;
+  const { onClose, open, changePage } = props;
 
   function handleClose() {
     onClose();
@@ -31,6 +31,7 @@ export default function ReqDialog(props) {
                 <ListItemText primary="A Player New to Ultimate" />
             </ListItem>
         </List>
+        <Button variant='contained' onClick={()=>changePage("Squads")}>Looking for a teamate?</Button>
       </DialogContent>
     </Dialog>
   );
