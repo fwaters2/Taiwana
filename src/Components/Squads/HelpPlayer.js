@@ -9,17 +9,17 @@ import {
   OutlinedInput,
   MenuItem,
   TextField,
-  SvgIcon
+  SvgIcon,
+  FormControlLabel,
+  Checkbox
 } from "@material-ui/core";
 
-export default function ToggleButtons(props) {
+export default function HelpPlayer(props) {
   
-  const {handleChange, player, values, handleGender, handleSize} = props
- 
-  const sizes=["S","M","L","XL","2XL","4XL"]
+  const {handleChange, player, values, handleGender, handleNewbie} = props
   const name= "name"+player
   const gender= "gender"+player
-  const size= "size"+player
+  const newbie = "newbie"+player
   return (
     <Grid container alignItems='center' justify='space-between'>
       
@@ -52,33 +52,13 @@ export default function ToggleButtons(props) {
         </ToggleButtonGroup>
       </Grid>
       <Grid item xs={6} sm={3}>
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel
-            //ref={inputLabel}
-            htmlFor="outlined-age-simple"
-          >
-            Shorts
-          </InputLabel>
-          <Select
-            value={values[size]}
-            onChange={handleSize}
-            input={
-              <OutlinedInput
-
-                // labelWidth={labelWidth}
-                name="size"
-                id="outlined-age-simple"
-              />
-            }
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {sizes.map(size=>(
-              <MenuItem key={size} value={size}>{size}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+      <FormControlLabel
+        control={
+          <Checkbox checked={values[newbie]} onChange={handleNewbie} value="checkedA" />
+        }
+        label="New to Ultimate"
+        
+      />
       </Grid>
     </Grid>
   );

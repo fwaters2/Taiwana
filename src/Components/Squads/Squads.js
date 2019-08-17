@@ -12,7 +12,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AddButton from "./AddButton";
 import ConstructionDialogue from "./ConstructionDialogue";
-import { Tabs, Tab, Box, Container } from "@material-ui/core";
+import { Tabs, Tab, Box, Container, Fab} from "@material-ui/core";
+import Registered from "./Registered";
+import { Add } from "@material-ui/icons";
+import HelpList from "./HelpList";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,89 +67,84 @@ const useStyles = makeStyles(theme => ({
 
 export default function InteractiveList(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [tabValue, changeTabValue] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
   const { langStrings, changePage } = props;
 
   const handleClose = value => {
     setOpen(false);
   };
+  const toggleTab = () => {
+    tabValue === 0 ? changeTabValue(1) : changeTabValue(0);
+  };
+
   return (
-    <div style={{width:"100vw"}}>
-      <Container style={{padding:"0"}}>
-    <div className={classes.root}>
-      <ConstructionDialogue open={open} onClose={handleClose} />
+    <div style={{ width: "100vw" }}>
+      <Container style={{ padding: "0" }} maxWidth='sm'>
+        <div className={classes.root}>
+          <ConstructionDialogue open={open} onClose={handleClose} />
 
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Tabs
-   
-
-            value={0}
-            onChange={()=>changePage("Register")}
-            aria-label="simple tabs example"
+          <AppBar position="static" color="default">
+            <Toolbar>
+              <Tabs
+                value={tabValue}
+                onChange={toggleTab}
+                aria-label="simple tabs example"
+              >
+                <Tab
+                  label={langStrings.FindTeammates}
+                  id="simple-tab-0"
+                  aria-controls="simple-tabpanel-0"
+                />
+                <Tab
+                  label="Registered"
+                  id="simple-tab-1"
+                  aria-controls="simple-tabpanel-1"
+                />
+              </Tabs>
+            </Toolbar>
+          </AppBar>
+          
+          <Typography
+            component="div"
+            role="tabpanel"
+            hidden={tabValue !== 0}
+            id="simple-tabpanel-1"
+            aria-labelledby="simple-tab-1"
           >
-            <Tab
-              label={langStrings.FindTeammates}
-              id="simple-tab-0"
-              aria-controls="simple-tabpanel-0"
-            />
-            <Tab
-              label="Register Squad"
-              id="simple-tab-1"
-              aria-controls="simple-tabpanel-1"
-            />
-          </Tabs>
-        </Toolbar>
-      </AppBar>
-      <Typography
-        component="div"
-        role="tabpanel"
-        hidden={false}
-        //{value !== index}
-        id="simple-tabpanel-1"
-        aria-labelledby="simple-tab-1"
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <div className={classes.demo}>
-              <List dense>
-                <ListItem>
-                  <ListItemIcon>
-                    <Group />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Boom Squad"
-                    secondary="Jack and Neal here looking for a lady to complete our squad!"
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemIcon>
-                    <Single />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary="Michael"
-                    secondary="New player looking for teammates!"
-                  />
-                </ListItem>
-              </List>
-            </div>
-          </Grid>
-        </Grid>
-        <AddButton />
-      </Typography>
-
-      <Typography
-        component="div"
-        role="tabpanel"
-        hidden={true}
-        //{value !== index}
-        id="simple-tabpanel-1"
-        aria-labelledby="simple-tab-1"
-      >
-        <Box p={3}>Nothing Yet</Box>
-      </Typography>
-    </div>
-    </Container>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <div className={classes.demo}>
+                  <HelpList />
+                </div>
+              </Grid>
+            </Grid>
+            <AddButton changePage={changePage}/>
+          </Typography>
+          
+          <Typography
+            component="div"
+            role="tabpanel"
+            hidden={tabValue !== 1}
+            id="simple-tabpanel-1"
+            aria-labelledby="simple-tab-1"
+          >
+            <Registered />
+            <Fab
+                  onClick={()=>changePage("Register")}
+                  style={{
+                    margin: 0,
+                    top: "auto",
+                    right: 20,
+                    bottom: 20,
+                    left: "auto",
+                    position: "fixed"
+                  }}
+                  color="secondary"
+                ><Add /></Fab>
+          </Typography>
+        </div>
+      </Container>
     </div>
   );
 }

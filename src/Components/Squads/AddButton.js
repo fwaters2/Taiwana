@@ -1,45 +1,46 @@
-import clsx from 'clsx';
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import SpeedDial from '@material-ui/lab/SpeedDial';
-import SpeedDialIcon from '@material-ui/lab/SpeedDialIcon';
-import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
+import clsx from "clsx";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import SpeedDial from "@material-ui/lab/SpeedDial";
+import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
+import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 
-
-import NewSquadPost from './NewSquadPost';
+import NewSquadPost from "./NewSquadPost";
+import { AccessibilityNew, GroupAdd, PersonAdd } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '100%',
+    width: "100%"
   },
   controls: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(3)
   },
   exampleWrapper: {
-    position: 'relative',
-    height: 380,
+    position: "relative",
+    height: 380
   },
   radioGroup: {
-    margin: theme.spacing(1, 0),
+    margin: theme.spacing(1, 0)
   },
   speedDial: {
-    position: 'absolute',
-    '&$directionUp': {
+    position: "absolute",
+    "&$directionUp": {
       bottom: theme.spacing(2),
-      right: theme.spacing(3),
-    },
+      right: theme.spacing(3)
+    }
   },
-  directionUp: {},
+  directionUp: {}
 }));
 
 const actions = [
-  { icon: <NewSquadPost need="Team" />, name: 'Looking for team' },
-  { icon: <NewSquadPost need="Ind" />, name: 'Looking for one more' },
+  { icon: <NewSquadPost need="Team" />, name: "Looking for team" },
+  { icon: <NewSquadPost need="Ind" />, name: "Looking for one more" }
 ];
 
-export default function AddButton() {
+export default function AddButton(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const { changePage } = props
 
   const handleClick = () => {
     setOpen(prevOpen => !prevOpen);
@@ -57,12 +58,11 @@ export default function AddButton() {
 
   return (
     <div className={classes.root}>
-
       <div className={classes.exampleWrapper}>
         <SpeedDial
           ariaLabel="SpeedDial example"
           className={speedDialClassName}
-          icon={<SpeedDialIcon />}
+          icon={<AccessibilityNew />}
           onBlur={handleClose}
           onClick={handleClick}
           onClose={handleClose}
@@ -70,16 +70,28 @@ export default function AddButton() {
           onMouseEnter={handleOpen}
           onMouseLeave={handleClose}
           open={open}
-          direction='up'
+          direction="up"
+          style={{
+            margin: 0,
+            top: "auto",
+            right: 20,
+            bottom: 20,
+            left: "auto",
+            position: "fixed"
+          }}
         >
-          {actions.map(action => (
-            <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
-              onClick={handleClick}
-            />
-          ))}
+          <SpeedDialAction
+            key="PersonAdd"
+            icon={<PersonAdd />}
+            tooltipTitle="I need a Squad!"
+            onClick={()=>changePage("HelpMe")}
+          />
+          <SpeedDialAction
+            key="GroupAdd"
+            icon={<GroupAdd />}
+            tooltipTitle="We need One!"
+            onClick={()=>changePage("HelpUs")}
+          />
         </SpeedDial>
       </div>
     </div>

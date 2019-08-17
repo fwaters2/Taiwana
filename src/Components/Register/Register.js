@@ -9,14 +9,37 @@ import {
   Typography,
   Container,
   FormHelperText,
-  ButtonGroup
+  ButtonGroup,
+  Dialog,
+  DialogTitle,
+  DialogContent
 } from "@material-ui/core";
 import ShortsDialog from "./ShortsDialog";
 import ReqDialog from "./ReqDialog";
+import Firestore from "./../../Utils/Firestore";
+import ResultDialog from "./ResultDialog";
 
-export default function Register() {
+const styles = {
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    margin: 200
+  },
+  //style for font size
+  resize: {
+    fontSize: 100
+  }
+};
+
+export default function Register(props) {
   const [open, setOpen] = React.useState(false);
   const [openReq, setOpenReq] = React.useState(false);
+  const [openResult, setOpenResult] = React.useState(false);
+  const [result, changeResult] = React.useState(
+    "Sorry, Please enter ALL information"
+  );
   const [values, updateValues] = React.useState({
     squadName: "",
     nameCap: "",
@@ -29,7 +52,7 @@ export default function Register() {
     sizeAss: "",
     sizeNew: ""
   });
-
+  const { changePage } = props;
   const handleChange = (e, item) => {
     updateValues({ ...values, [item]: e.target.value });
   };
@@ -51,31 +74,33 @@ export default function Register() {
       genderNew: newGender
     });
   };
-const handleSizeCap = (e) =>{
-  updateValues({
-    ...values,
-    sizeCap: e.target.value
-  });
-}
-const handleSizeAss = (e) =>{
-  updateValues({
-    ...values,
-    sizeAss: e.target.value
-  });
-}
-const handleSizeNew = (e) =>{
-  updateValues({
-    ...values,
-    sizeNew: e.target.value
-  });
-}
-
+  const handleSizeCap = e => {
+    updateValues({
+      ...values,
+      sizeCap: e.target.value
+    });
+  };
+  const handleSizeAss = e => {
+    updateValues({
+      ...values,
+      sizeAss: e.target.value
+    });
+  };
+  const handleSizeNew = e => {
+    updateValues({
+      ...values,
+      sizeNew: e.target.value
+    });
+  };
 
   function handleClickOpen() {
     setOpen(true);
   }
   function handleClickOpenReq() {
     setOpenReq(true);
+  }
+  function handleClickOpenResult() {
+    setOpenResult(true);
   }
 
   const handleClose = value => {
@@ -85,9 +110,51 @@ const handleSizeNew = (e) =>{
     setOpenReq(false);
   };
 
-  const handleSubmit = () =>{
-    alert("Welcome team "+ values.squadName)
+  function handleCloseResult() {
+    result === "Success" ? changePage("Squads") : changePage("Register");
+    setOpenResult(false);
   }
+
+  const handleSubmit = () => {
+    handleClickOpenResult();
+    const approved = () => {
+      // let newSquad = {
+      //   SquadName: values.squadName,
+      //   Paid: false,
+      //   cap: {
+      //     name: values.nameCap,
+      //     gender: values.genderCap,
+      //     size: values.sizeCap
+      //   },
+      //   ass: {
+      //     name: values.nameAss,
+      //     gender: values.genderAss,
+      //     size: values.sizeAss
+      //   },
+      //   new: {
+      //     name: values.nameNew,
+      //     gender: values.genderNew,
+      //     size: values.sizeNew
+      //   }
+      // };
+      // Firestore.firestore().collection("TaiwanaReg").add(
+      //   newSquad
+      // )
+      changeResult("Success");
+    };
+    values.squadName != "" &&
+    values.nameCap != "" &&
+    values.nameAss != "" &&
+    values.nameNew != "" &&
+    values.genderCap != "" &&
+    values.genderAss != "" &&
+    values.genderNew != "" &&
+    values.sizeCap != "" &&
+    values.sizeAss != "" &&
+    values.sizeNew != ""
+      ? approved()
+      : changeResult("Error");
+  };
   return (
     <div style={{ width: "100vw" }}>
       <Container maxWidth="md">
@@ -107,6 +174,14 @@ const handleSizeNew = (e) =>{
             <ShortsDialog open={open} onClose={handleClose} />
             <ReqDialog open={openReq} onClose={handleCloseReq} />
             <TextField
+            autoFocus
+              inputProps={{
+                style: {
+                  fontSize: 25,
+                  fontWeight: 'bold'
+                }
+              }}
+              className={styles.textField}
               label="Squad Name"
               fullWidth
               variant="filled"
@@ -144,9 +219,19 @@ const handleSizeNew = (e) =>{
               />
             </ListItem>
           </List>
-          <Button variant="contained" color="primary" fullWidth onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={handleSubmit}
+          >
             Submit Squad
           </Button>
+          <ResultDialog
+            open={openResult}
+            onClose={handleCloseResult}
+            result={result}
+          />
         </Paper>
       </Container>
     </div>

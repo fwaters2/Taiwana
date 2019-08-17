@@ -10,6 +10,8 @@ import Schedule from "./Components/Schedule";
 import WhatToBring from "./Components/Extra/WhatToBring";
 import AboutUs from "./Components/Extra/AboutUs";
 import Register from "./Components/Register/Register";
+import HelpMe from './Components/Squads/HelpMe'
+import HelpUs from "./Components/Squads/HelpUs";
 
 export default function Router(props) {
   const { currentPage, langStrings, changePage } = props;
@@ -35,7 +37,11 @@ export default function Router(props) {
     case "AboutUs":
       return <AboutUs />;
     case "Register":
-      return <Register />;
+      return <Register changePage={changePage}/>;
+    case "HelpMe":
+      return <HelpMe changePage={changePage}/>
+    case "HelpUs":
+      return <HelpUs changePage={changePage}/>
     default:
       return <div>Broken</div>;
   }
