@@ -10,9 +10,6 @@ import {
   Container,
   FormHelperText,
   ButtonGroup,
-  Dialog,
-  DialogTitle,
-  DialogContent
 } from "@material-ui/core";
 import ShortsDialog from "./ShortsDialog";
 import ReqDialog from "./ReqDialog";
@@ -35,7 +32,7 @@ const styles = {
 
 export default function Register(props) {
   const [open, setOpen] = React.useState(false);
-  const [openReq, setOpenReq] = React.useState(false);
+  const [openReq, setOpenReq] = React.useState(true);
   const [openResult, setOpenResult] = React.useState(false);
   const [result, changeResult] = React.useState(
     "Sorry, Please enter ALL information"
@@ -118,40 +115,40 @@ export default function Register(props) {
   const handleSubmit = () => {
     handleClickOpenResult();
     const approved = () => {
-      // let newSquad = {
-      //   SquadName: values.squadName,
-      //   Paid: false,
-      //   cap: {
-      //     name: values.nameCap,
-      //     gender: values.genderCap,
-      //     size: values.sizeCap
-      //   },
-      //   ass: {
-      //     name: values.nameAss,
-      //     gender: values.genderAss,
-      //     size: values.sizeAss
-      //   },
-      //   new: {
-      //     name: values.nameNew,
-      //     gender: values.genderNew,
-      //     size: values.sizeNew
-      //   }
-      // };
-      // Firestore.firestore().collection("TaiwanaReg").add(
-      //   newSquad
-      // )
+      let newSquad = {
+        SquadName: values.squadName,
+        Paid: false,
+        cap: {
+          name: values.nameCap,
+          gender: values.genderCap,
+          size: values.sizeCap
+        },
+        ass: {
+          name: values.nameAss,
+          gender: values.genderAss,
+          size: values.sizeAss
+        },
+        new: {
+          name: values.nameNew,
+          gender: values.genderNew,
+          size: values.sizeNew
+        }
+      };
+      Firestore.firestore().collection("TaiwanaReg").add(
+        newSquad
+      )
       changeResult("Success");
     };
-    values.squadName != "" &&
-    values.nameCap != "" &&
-    values.nameAss != "" &&
-    values.nameNew != "" &&
-    values.genderCap != "" &&
-    values.genderAss != "" &&
-    values.genderNew != "" &&
-    values.sizeCap != "" &&
-    values.sizeAss != "" &&
-    values.sizeNew != ""
+    values.squadName !== "" &&
+    values.nameCap !== "" &&
+    values.nameAss !== "" &&
+    values.nameNew !== "" &&
+    values.genderCap !== "" &&
+    values.genderAss !== "" &&
+    values.genderNew !== "" &&
+    values.sizeCap !== "" &&
+    values.sizeAss !== "" &&
+    values.sizeNew !== ""
       ? approved()
       : changeResult("Error");
   };

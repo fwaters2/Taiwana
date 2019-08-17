@@ -5,7 +5,7 @@ export default function AboutUs() {
   return (
     <div style={{width:"100vw"}}>
     <Container maxWidth="sm">
-      <Typography variant="h4">Purpose:</Typography>
+      <Typography variant="h4" align="center" gutterBottom>Purpose</Typography>
       <Typography paragraph>
         The goal of this tournament is introduce the sport to as many people as
         possible while playing with as many different people as possible. With

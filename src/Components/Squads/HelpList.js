@@ -1,12 +1,10 @@
 import React from "react";
 import Firestore from "./../../Utils/Firestore";
-import Single from "@material-ui/icons/AccessibilityNew";
 import Group from "@material-ui/icons/Group";
 import {
   List,
   ListItem,
   ListItemText,
-  Button,
   ListItemIcon
 } from "@material-ui/core";
 import { AccessibilityNew } from "@material-ui/icons";
@@ -26,22 +24,7 @@ export default function HelpList() {
 
     return () => unsubscribe;
   }, []);
-  const helpArray = [
-    {
-      Description: "",
-      ContactInfo: "",
-      cap: {
-        name: "",
-        gender: "",
-        newbie: ""
-      },
-      ass: {
-        name: "",
-        gender: "",
-        newbie: ""
-      }
-    }
-  ];
+
   function singlePrimary(name, gender, newbie) {
     let funGender = gender === "Male" ? "Guy" : "Lady";
     return (
@@ -50,7 +33,6 @@ export default function HelpList() {
   }
 
   function groupPrimary(cName, cGender, cNewbie, aName, aGender, aNewbie) {
-      let isOneExp = cNewbie && aNewbie
     let needNew = !cNewbie && !aNewbie;
     let needGender =
       cGender !== aGender ? "Person" : cGender === "Male" ? "Lady" : "Dude";

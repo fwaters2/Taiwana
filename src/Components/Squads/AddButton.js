@@ -2,10 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SpeedDial from "@material-ui/lab/SpeedDial";
-import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
-
-import NewSquadPost from "./NewSquadPost";
 import { AccessibilityNew, GroupAdd, PersonAdd } from "@material-ui/icons";
 
 const useStyles = makeStyles(theme => ({
@@ -31,11 +28,6 @@ const useStyles = makeStyles(theme => ({
   },
   directionUp: {}
 }));
-
-const actions = [
-  { icon: <NewSquadPost need="Team" />, name: "Looking for team" },
-  { icon: <NewSquadPost need="Ind" />, name: "Looking for one more" }
-];
 
 export default function AddButton(props) {
   const classes = useStyles();

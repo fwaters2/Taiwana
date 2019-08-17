@@ -7,18 +7,12 @@ import {
   List,
   ListItem,
   Typography,
-  Container,
-  FormHelperText,
-  ButtonGroup,
-  Dialog,
-  DialogTitle,
-  DialogContent
+  Container
 } from "@material-ui/core";
 import Firestore from "./../../Utils/Firestore";
 import HelpMeDialog from "./HelpMeDialog";
 
 export default function HelpMe(props) {
-  const [open, setOpen] = React.useState(false);
   const [openResult, setOpenResult] = React.useState(false);
   const [result, changeResult] = React.useState(
     "Sorry, Please enter ALL information"
@@ -33,6 +27,7 @@ export default function HelpMe(props) {
   });
   const { changePage } = props;
   const handleChange = (e, item) => {
+    console.log(values)
     updateValues({ ...values, [item]: e.target.value });
   };
 
@@ -50,17 +45,9 @@ export default function HelpMe(props) {
     });
   };
 
-  function handleClickOpen() {
-    setOpen(true);
-  }
-
   function handleClickOpenResult() {
     setOpenResult(true);
   }
-
-  const handleClose = value => {
-    setOpen(false);
-  };
 
   function handleCloseResult() {
     result === "Success" ? changePage("Squads") : changePage("HelpMe");
@@ -87,9 +74,9 @@ export default function HelpMe(props) {
       
     };
     
-    values.nameAss != "" &&
-    values.genderAss != "" &&
-    values.contactInfo != ""
+    values.nameAss !== "" &&
+    values.genderAss !== "" &&
+    values.contactInfo !== ""
 
       ? approved()
       : changeResult("Error");
@@ -116,16 +103,16 @@ export default function HelpMe(props) {
               label="How to contact you"
               fullWidth
               variant="filled"
-              value={values.description}
-              onChange={e => handleChange(e, "description")}
+              value={values.contactInfo}
+              onChange={e => handleChange(e, "contactInfo")}
             />
           <TextField
               label="(Optional) Short Description of yourself or who you'd want to play with"
               fullWidth
               rows="4"
               multiline
-              value={values.contactInfo}
-              onChange={e => handleChange(e, "contactInfo")}
+              value={values.description}
+              onChange={e => handleChange(e, "description")}
             />
           <Button
             variant="contained"

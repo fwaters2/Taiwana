@@ -1,18 +1,11 @@
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
-import Single from "@material-ui/icons/AccessibilityNew";
-import Group from "@material-ui/icons/Group";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AddButton from "./AddButton";
-import ConstructionDialogue from "./ConstructionDialogue";
-import { Tabs, Tab, Box, Container, Fab} from "@material-ui/core";
+import { Tabs, Tab, Container, Fab} from "@material-ui/core";
 import Registered from "./Registered";
 import { Add } from "@material-ui/icons";
 import HelpList from "./HelpList";
@@ -68,12 +61,8 @@ const useStyles = makeStyles(theme => ({
 export default function InteractiveList(props) {
   const classes = useStyles();
   const [tabValue, changeTabValue] = React.useState(0);
-  const [open, setOpen] = React.useState(false);
   const { langStrings, changePage } = props;
 
-  const handleClose = value => {
-    setOpen(false);
-  };
   const toggleTab = () => {
     tabValue === 0 ? changeTabValue(1) : changeTabValue(0);
   };
@@ -82,8 +71,6 @@ export default function InteractiveList(props) {
     <div style={{ width: "100vw" }}>
       <Container style={{ padding: "0" }} maxWidth='sm'>
         <div className={classes.root}>
-          <ConstructionDialogue open={open} onClose={handleClose} />
-
           <AppBar position="static" color="default">
             <Toolbar>
               <Tabs

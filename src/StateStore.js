@@ -4,7 +4,7 @@ import "./Utils/lang.json";
 const lang = require("./Utils/lang.json");
 
 export default function StateStore() {
-  const [currentPage, updatePage] = React.useState("Squads");
+  const [currentPage, updatePage] = React.useState("Home");
   const [currentLang, changeLang] = React.useState("en");
   const langStrings = lang[currentLang];
   function changePage(page) {

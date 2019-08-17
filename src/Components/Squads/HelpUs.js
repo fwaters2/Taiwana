@@ -7,18 +7,12 @@ import {
   List,
   ListItem,
   Typography,
-  Container,
-  FormHelperText,
-  ButtonGroup,
-  Dialog,
-  DialogTitle,
-  DialogContent
+  Container
 } from "@material-ui/core";
 import Firestore from "./../../Utils/Firestore";
 import HelpMeDialog from "./HelpMeDialog";
 
 export default function HelpUs(props) {
-  const [open, setOpen] = React.useState(false);
   const [openResult, setOpenResult] = React.useState(false);
   const [result, changeResult] = React.useState(
     "Sorry, Please enter ALL information"
@@ -67,18 +61,9 @@ export default function HelpUs(props) {
     });
   };
 
-
-  function handleClickOpen() {
-    setOpen(true);
-  }
-
   function handleClickOpenResult() {
     setOpenResult(true);
   }
-
-  const handleClose = value => {
-    setOpen(false);
-  };
 
   function handleCloseResult() {
     result === "Success" ? changePage("Squads") : changePage("HelpMe");
@@ -110,12 +95,12 @@ export default function HelpUs(props) {
       
     };
     
-    values.nameCap != "" &&
-    values.nameAss != "" &&
+    values.nameCap !== "" &&
+    values.nameAss !== "" &&
 
-    values.genderCap != "" &&
-    values.genderAss != "" &&
-    values.contactInfo != ""
+    values.genderCap !== "" &&
+    values.genderAss !== "" &&
+    values.contactInfo !== ""
 
       ? approved()
       : changeResult("Error");
