@@ -1,6 +1,7 @@
 {
   "en": {
     "Taiwana": "Taiwana",
+    "Register": "Register",
     "Home": "Home",
     "Squads": "Squads",
     "HowToPlay": "How To Play",
@@ -33,6 +34,7 @@
   },
   "ch": {
     "Taiwana": "台灣啊",
+    "Register":"報名",
     "Home": "主頁",
     "Squads": "隊友",
     "HowToPlay": "怎麼玩",

@@ -1,11 +1,10 @@
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import AddButton from "./AddButton";
-import { Tabs, Tab, Container, Fab} from "@material-ui/core";
+import { Tabs, Tab, Container, Fab } from "@material-ui/core";
 import Registered from "./Registered";
 import { Add } from "@material-ui/icons";
 import HelpList from "./HelpList";
@@ -69,7 +68,7 @@ export default function InteractiveList(props) {
 
   return (
     <div style={{ width: "100vw" }}>
-      <Container style={{ padding: "0" }} maxWidth='sm'>
+      <Container style={{ padding: "0" }} maxWidth="sm">
         <div className={classes.root}>
           <AppBar position="static" color="default">
             <Toolbar>
@@ -91,7 +90,7 @@ export default function InteractiveList(props) {
               </Tabs>
             </Toolbar>
           </AppBar>
-          
+
           <Typography
             component="div"
             role="tabpanel"
@@ -99,16 +98,10 @@ export default function InteractiveList(props) {
             id="simple-tabpanel-1"
             aria-labelledby="simple-tab-1"
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <div className={classes.demo}>
-                  <HelpList />
-                </div>
-              </Grid>
-            </Grid>
-            <AddButton changePage={changePage}/>
+            <HelpList />
+            <AddButton changePage={changePage} />
           </Typography>
-          
+
           <Typography
             component="div"
             role="tabpanel"
@@ -118,17 +111,19 @@ export default function InteractiveList(props) {
           >
             <Registered />
             <Fab
-                  onClick={()=>changePage("Register")}
-                  style={{
-                    margin: 0,
-                    top: "auto",
-                    right: 20,
-                    bottom: 20,
-                    left: "auto",
-                    position: "fixed"
-                  }}
-                  color="secondary"
-                ><Add /></Fab>
+              onClick={() => changePage("Register")}
+              style={{
+                margin: 0,
+                top: "auto",
+                right: 20,
+                bottom: 20,
+                left: "auto",
+                position: "fixed"
+              }}
+              color="secondary"
+            >
+              <Add />
+            </Fab>
           </Typography>
         </div>
       </Container>

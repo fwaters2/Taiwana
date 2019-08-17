@@ -136,8 +136,8 @@ export default function HelpUs(props) {
               label="How to contact you"
               fullWidth
               variant="filled"
-              value={values.description}
-              onChange={e => handleChange(e, "description")}
+              value={values.contactInfo}
+              onChange={e => handleChange(e, "contactInfo")}
             />
           <TextField
               
@@ -145,8 +145,8 @@ export default function HelpUs(props) {
               fullWidth
               rows="4"
               multiline
-              value={values.contactInfo}
-              onChange={e => handleChange(e, "contactInfo")}
+              value={values.description}
+              onChange={e => handleChange(e, "description")}
             />
           <Button
             variant="contained"

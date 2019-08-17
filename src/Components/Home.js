@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import Info from "@material-ui/icons/Info";
 
 import Container from "@material-ui/core/Container";
-import { SentimentVerySatisfied, Add } from "@material-ui/icons";
+import { SentimentVerySatisfied } from "@material-ui/icons";
 import { Fab } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -46,7 +46,7 @@ const strings = [
 
 export default function InteractiveList(props) {
   const classes = useStyles();
-  const { changePage } = props;
+  const { changePage, langStrings } = props;
 
   return (
     <div style={{ width: "100vw" }}>
@@ -55,8 +55,6 @@ export default function InteractiveList(props) {
       </Container>
       <Container maxWidth="md">
         <div className={classes.root}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
               <div className={classes.demo}>
                 <List>
                   {strings.map(string => (
@@ -82,22 +80,24 @@ export default function InteractiveList(props) {
                   ))}
                 </List>
                 <Fab
+                variant='extended'
                   onClick={()=>changePage("Register")}
                   style={{
-                    margin: 0,
+                    margin: 0                        ,
                     top: "auto",
-                    right: 20,
+                    width: "80%",
+                    maxWidth: "500px",
                     bottom: 20,
-                    left: "auto",
+                    left: "50%",
+                    transform: 'translate(-50%, 0)',
                     position: "fixed"
                   }}
                   color="secondary"
                 >
-                  <Add />
+                 { langStrings.Register}
                 </Fab>
               </div>
-            </Grid>
-          </Grid>
+
         </div>
       </Container>
     </div>

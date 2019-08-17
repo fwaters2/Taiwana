@@ -48,7 +48,7 @@ export default function HelpList() {
     );
   }
   function Secondary(desc, cInfo) {
-    return cInfo + " " + desc;
+    return desc + " " + cInfo;
   }
 
   return (
