@@ -29,7 +29,6 @@ export default function HelpUs(props) {
 
     contactInfo: "",
     description: ""
-
   });
   const { changePage } = props;
   const handleChange = (e, item) => {
@@ -66,17 +65,20 @@ export default function HelpUs(props) {
   }
 
   function handleCloseResult() {
-    result === "Success" ? changePage("Squads") : changePage("HelpMe");
+    result === "Success" ? changePage("Squads") : changePage("HelpUs");
     setOpenResult(false);
+  }
+  function handleBack() {
+    changePage("Squads");
   }
 
   const handleSubmit = () => {
-      console.log(values)
+    console.log(values);
     handleClickOpenResult();
     const approved = () => {
       let newHelp = {
         Description: values.description,
-         ContactInfo: values.contactInfo,
+        ContactInfo: values.contactInfo,
         cap: {
           name: values.nameCap,
           gender: values.genderCap,
@@ -86,22 +88,19 @@ export default function HelpUs(props) {
           name: values.nameAss,
           gender: values.genderAss,
           newbie: values.newbieAss
-        },
+        }
       };
-      Firestore.firestore().collection("TaiwanaHelp").add(
-        newHelp
-      )
+      Firestore.firestore()
+        .collection("TaiwanaHelp")
+        .add(newHelp);
       changeResult("Success");
-      
     };
-    
+
     values.nameCap !== "" &&
     values.nameAss !== "" &&
-
     values.genderCap !== "" &&
     values.genderAss !== "" &&
     values.contactInfo !== ""
-
       ? approved()
       : changeResult("Error");
   };
@@ -111,7 +110,7 @@ export default function HelpUs(props) {
         <Paper>
           <List>
             <Typography variant="h5" align="center" gutterBottom>
-             We need 1!
+              Looking for 1 more
             </Typography>
             <ListItem divider key="Cap">
               <HelpPlayer
@@ -133,21 +132,20 @@ export default function HelpUs(props) {
             </ListItem>
           </List>
           <TextField
-              label="How to contact you"
-              fullWidth
-              variant="filled"
-              value={values.contactInfo}
-              onChange={e => handleChange(e, "contactInfo")}
-            />
+            label="How to contact you"
+            fullWidth
+            variant="filled"
+            value={values.contactInfo}
+            onChange={e => handleChange(e, "contactInfo")}
+          />
           <TextField
-              
-              label="(Optional) Short Description of yourself or who you'd want to play with"
-              fullWidth
-              rows="4"
-              multiline
-              value={values.description}
-              onChange={e => handleChange(e, "description")}
-            />
+            label="(Optional) Short Description of yourself or who you'd want to play with"
+            fullWidth
+            rows="4"
+            multiline
+            value={values.description}
+            onChange={e => handleChange(e, "description")}
+          />
           <Button
             variant="contained"
             color="primary"
@@ -156,11 +154,11 @@ export default function HelpUs(props) {
           >
             Submit Request
           </Button>
-            <Button
+          <Button
             variant="contained"
             color="secondary"
             fullWidth
-            onClick={()=>changePage("Squads")}
+            onClick={handleBack}
           >
             Back
           </Button>

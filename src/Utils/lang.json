@@ -3,18 +3,34 @@
     "Taiwana": "Taiwana",
     "Register": "Register",
     "Home": "Home",
-    "Squads": "Squads",
+    "Squads": "Squad Finder",
     "HowToPlay": "How To Play",
-    "Schedule": "Schedule",
+    "Schedule": "Tourney Format",
     "Date": "Friday, September 13th",
     "Location": "Location",
     "Transportation":"Transportation",
     "QijinBar": "Qijin Sunset Bar",
     "FAQ": "FAQ",
+    "Cost": "Money Info",
     "Map": "Map",
     "WhatToBring":"What To Bring",
+    "CurrentlyRegistered":"Currently Registered",
     "AboutUs": "About Us",
 
+    "HomeStrings":[
+      { "Q": "What?", "A": "Ultimate Frisbee on the Beach!", "page": "HowToPlay" },
+      { "Q": "Cost?", "A": "Early bird = $1,000/squad. Click here to see what's included!", "page":"Cost"},
+      { "Q": "When?", "A": "Friday, September 13th", "page": "Schedule" },
+      { "Q": "Where?", "A": "Qijin Beach, Kaohsiung", "page": "Location" },
+      {
+        "Q": "Why?",
+        "A": "Play/Learn Ultimate, meet new people, and enjoy the beach!",
+        "page": "HowToPlay"
+      },
+      { "Q": "Who?", "A": "Check for yourself!", "page": "CurrentlyRegistered" },
+      { "Q": "How?", "A": "Sign-up or find your squad here!", "page": "Squads" }
+    ],
+    
     "FindTeammates": "Find Teammates",
     "SubjectToChange": "SUBJECT TO CHANGE",
     "ExtraRules": "Do you love rules??? Click",
@@ -46,7 +62,9 @@
    
     "FAQ": "常問問題",
     "Map": "地圖",
+    "Cost": "Money Info",
     "WhatToBring":"需要帶些什麼",
+    "CurrentlyRegistered":"Currently Registered",
     "AboutUs": "關於我們",
 
     "FindTeammates": "找到隊友",
@@ -55,6 +73,20 @@
     "Here": "這裡",
 
     "AboutText": "夏天來了，你們準備好要來場沙灘飛盤了嗎！快和幾個朋友一起來旗津參加比賽吧。 這次的比賽形式會讓大家以不同的方式交替組隊，而你所需要做的只是組一個3人小隊（包括你自己）一起參加。 3人包含： 1個好奇寶寶：從來沒玩過競技飛盤，但有興趣及願意嘗試。 1個愛好者：已玩了一陣子競技飛盤，但對於比賽還似懂非懂。 1個菁英份子：有知識及技巧可以與大家分享的人。 最後，請注意每隊需至少有一位女性選手（不論程度） 已經知道要找哪幾個朋友一起參加了嗎？ 小隊參賽費用（非單人）：1000元（6/8前報名為900元，快開始召集吧） 而你會得到： - 整個下午的飛盤時光 - 可正反兩穿的無袖上衣 - 前幾名的獎品 - 水及冰塊 個人報名費用：350元（若我們沒辦法幫你找到可參加的隊伍，費用將全數退還） 額外細節（重點是你已瞭解上述訊息，以下若太複雜可略過）： 本次的活動目標一為推廣競技飛盤讓更多人認識，二為能和各個不同選手一起組隊。所以我們將介紹一個新型式的比賽，每隊每場都會與不同的小隊組隊，進行5:5的比賽。範例如下： - 你的小隊（3人）與其他兩小隊（Bob & Marla，各3人）組成一隊對上其他三小隊（Steve, John & Debbie)所組成的隊伍。贏的那一方，3小隊各得一分 - 你的小隊在下一場比賽與其他2小隊組隊，對上其他3小隊所組成的隊伍。贏的那一方，3小隊再各得一分 - 重複相同賽制 -在所有的比賽結束後，我們會結算個小隊的分數，得到最多分者為最後贏家",
+    "HomeStrings":[
+      { "Q": "什麼?", "A": "海邊飛盤!", "page": "HowToPlay" },
+      { "Q": "Cost?", "A": "Early bird: $1,000/squad. Click here to see what's included!", "page":"Cost"},
+      { "Q": "什麼時候?", "A": "9月13日星期五", "page": "Schedule" },
+      { "Q": "哪裡?", "A": "旗津海邊, 高雄", "page": "Location" },
+      {
+        "Q": "為什麼?",
+        "A": "Play/Learn Ultimate, meet new people, and enjoy the beach!",
+        "page": "HowToPlay"
+      },
+      { "Q": "誰?", "A": "Check for yourself!", "page": "CurrentlyRegistered" },
+      { "Q": "怎麼樣?", "A": "Sign-up or find your squad here!", "page": "Squads" }
+    ],
+    
     "Questions": [
         {
           "Q": "什麼是POD錦標賽?",

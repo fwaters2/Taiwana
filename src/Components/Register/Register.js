@@ -9,26 +9,12 @@ import {
   Typography,
   Container,
   FormHelperText,
-  ButtonGroup,
+  ButtonGroup
 } from "@material-ui/core";
 import ShortsDialog from "./ShortsDialog";
 import ReqDialog from "./ReqDialog";
 import Firestore from "./../../Utils/Firestore";
 import ResultDialog from "./ResultDialog";
-
-const styles = {
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  textField: {
-    margin: 200
-  },
-  //style for font size
-  resize: {
-    fontSize: 100
-  }
-};
 
 export default function Register(props) {
   const [open, setOpen] = React.useState(false);
@@ -37,6 +23,7 @@ export default function Register(props) {
   const [result, changeResult] = React.useState(
     "Sorry, Please enter ALL information"
   );
+  const[resultMessage, changeResultMessage] = "Please fill out your information"
   const [values, updateValues] = React.useState({
     squadName: "",
     nameCap: "",
@@ -53,6 +40,13 @@ export default function Register(props) {
   const handleChange = (e, item) => {
     updateValues({ ...values, [item]: e.target.value });
   };
+  // function handleMessage(error){
+  //   error==="Success"?
+  //   "Success! Please transfer ASAP :D":
+  //   error==="SameGender"?
+  //   "I'm sorry, each squad should have at least one guy and one lady!":
+  //   "Please fill out all the information"
+  // }
   const handleGenderCap = (event, newGender) => {
     updateValues({
       ...values,
@@ -111,6 +105,9 @@ export default function Register(props) {
     result === "Success" ? changePage("Squads") : changePage("Register");
     setOpenResult(false);
   }
+  function handleBack() {
+    changePage("Home");
+  }
 
   const handleSubmit = () => {
     handleClickOpenResult();
@@ -134,9 +131,9 @@ export default function Register(props) {
           size: values.sizeNew
         }
       };
-      Firestore.firestore().collection("TaiwanaReg").add(
-        newSquad
-      )
+      Firestore.firestore()
+        .collection("TaiwanaReg")
+        .add(newSquad);
       changeResult("Success");
     };
     values.squadName !== "" &&
@@ -149,7 +146,9 @@ export default function Register(props) {
     values.sizeCap !== "" &&
     values.sizeAss !== "" &&
     values.sizeNew !== ""
-      ? approved()
+      ? (values.genderCap === values.genderAss) === values.genderNew
+        ? changeResult("SameGender")
+        : approved()
       : changeResult("Error");
   };
   return (
@@ -169,16 +168,19 @@ export default function Register(props) {
               </Button>
             </ButtonGroup>
             <ShortsDialog open={open} onClose={handleClose} />
-            <ReqDialog changePage={changePage} open={openReq} onClose={handleCloseReq} />
+            <ReqDialog
+              changePage={changePage}
+              open={openReq}
+              onClose={handleCloseReq}
+            />
             <TextField
-            autoFocus
+              autoFocus
               inputProps={{
                 style: {
                   fontSize: 25,
-                  fontWeight: 'bold'
+                  fontWeight: "bold"
                 }
               }}
-              className={styles.textField}
               label="Squad Name"
               fullWidth
               variant="filled"
@@ -188,6 +190,7 @@ export default function Register(props) {
             <FormHelperText>Captain</FormHelperText>
             <ListItem divider key="Cap">
               <Player
+                handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
                 handleGender={handleGenderCap}
@@ -198,6 +201,7 @@ export default function Register(props) {
             <FormHelperText>Assistant Captain</FormHelperText>
             <ListItem divider key="Ass">
               <Player
+                handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
                 handleGender={handleGenderAss}
@@ -208,6 +212,7 @@ export default function Register(props) {
             <FormHelperText>New Player</FormHelperText>
             <ListItem key="New">
               <Player
+                handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
                 handleGender={handleGenderNew}
@@ -224,10 +229,18 @@ export default function Register(props) {
           >
             Submit Squad
           </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            fullWidth
+            onClick={handleBack}
+          >
+            Back
+          </Button>
           <ResultDialog
             open={openResult}
             onClose={handleCloseResult}
-            result={result}
+            result={resultMessage}
           />
         </Paper>
       </Container>

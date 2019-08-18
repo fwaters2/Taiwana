@@ -1,10 +1,12 @@
 import React from "react";
 import { Container } from "@material-ui/core";
+import GoogleMap from './GoogleMap'
 
 export default function Location() {
   return (
     <div style={{width:"100vw"}}>
     <Container style={{padding:"0"}} maxWidth="sm">
+      <GoogleMap />
       <div style={{width:"340px",height:"1500px"}}>
      <iframe
      title="Sunset Beach Bar"

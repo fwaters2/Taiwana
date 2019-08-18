@@ -9,30 +9,31 @@ import {
   OutlinedInput,
   MenuItem,
   TextField,
-  SvgIcon
+  SvgIcon,
+  IconButton,
+  Box
 } from "@material-ui/core";
+import { Info } from "@material-ui/icons";
 
 export default function ToggleButtons(props) {
-  
-  const {handleChange, player, values, handleGender, handleSize} = props
- 
-  const sizes=["S","M","L","XL","2XL","4XL"]
-  const name= "name"+player
-  const gender= "gender"+player
-  const size= "size"+player
+  const { handleChange, player, values, handleGender, handleSize, handleClickOpen } = props;
+
+  const sizes = ["S", "M", "L", "XL", "2XL", "4XL"];
+  const name = "name" + player;
+  const gender = "gender" + player;
+  const size = "size" + player;
   return (
-    <Grid container alignItems='center' justify='space-between'>
-      
+    <Grid container alignItems="center" justify="space-between" spacing={1}>
       <Grid item xs={12} sm={6}>
         <TextField
-        fullWidth
-        variant='outlined'
+          fullWidth
+          variant="outlined"
           label="Name"
           value={values[name]}
-          onChange={(e)=>handleChange(e, name)}
+          onChange={e => handleChange(e, name)}
         />
       </Grid>
-      <Grid container justify='center' item xs={6} sm={3}>
+      <Grid container justify="center" item xs={6} sm={3}>
         <ToggleButtonGroup
           value={values[gender]}
           exclusive
@@ -52,33 +53,44 @@ export default function ToggleButtons(props) {
         </ToggleButtonGroup>
       </Grid>
       <Grid item xs={6} sm={3}>
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel
-            //ref={inputLabel}
-            htmlFor="outlined-age-simple"
-          >
-            Shorts
-          </InputLabel>
-          <Select
-            value={values[size]}
-            onChange={handleSize}
-            input={
-              <OutlinedInput
-
-                // labelWidth={labelWidth}
-                name="size"
-                id="outlined-age-simple"
-              />
-            }
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {sizes.map(size=>(
-              <MenuItem key={size} value={size}>{size}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+        <Box display="flex">
+          <Box flexGrow={1}>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel
+                //ref={inputLabel}
+                htmlFor="outlined-age-simple"
+              >
+                Shorts
+              </InputLabel>
+              <Select
+                value={values[size]}
+                onChange={handleSize}
+                input={
+                  <OutlinedInput
+                    notched
+                    // labelWidth={labelWidth}
+                    name="size"
+                    id="outlined-age-simple"
+                  />
+                }
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {sizes.map(size => (
+                  <MenuItem key={size} value={size}>
+                    {size}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Box>
+          <Box>
+            <IconButton onClick={handleClickOpen}>
+              <Info />
+            </IconButton>
+          </Box>
+        </Box>
       </Grid>
     </Grid>
   );

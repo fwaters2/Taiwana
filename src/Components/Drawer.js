@@ -13,7 +13,8 @@ import {
   IconButton,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  Hidden
 } from "@material-ui/core/";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -28,7 +29,9 @@ import {
   Home,
   BeachAccess,
   DirectionsBoat,
-  LiveHelp
+  LiveHelp,
+  PersonAdd,
+  AttachMoney
 } from "@material-ui/icons";
 import Router from "../Router";
 import { FormControlLabel, Switch } from "@material-ui/core";
@@ -59,8 +62,8 @@ const useStyles = makeStyles(theme => ({
     ...theme.mixins.toolbar,
     justifyContent: "space-between"
   },
-  headerSpace:{ 
-    ...theme.mixins.toolbar,
+  headerSpace: {
+    ...theme.mixins.toolbar
   },
   title: {
     flexGrow: 1
@@ -80,7 +83,7 @@ export default function PersistentDrawerLeft(props) {
   } = props;
   const mainPages = [
     { key: "Home", icon: <Home /> },
-    { key: "Squads", icon: <Group /> },
+    { key: "Squads", icon: <PersonAdd /> },
     { key: "HowToPlay", icon: <School /> },
     { key: "Schedule", icon: <AccessTime /> },
     { key: "Location", icon: <Place /> },
@@ -88,7 +91,9 @@ export default function PersistentDrawerLeft(props) {
     { key: "FAQ", icon: <LiveHelp /> }
   ];
   const extraPages = [
+    { key: "Cost", icon: <AttachMoney /> },
     { key: "Map", icon: <Map /> },
+    { key: "CurrentlyRegistered", icon: <Group /> },
     { key: "WhatToBring", icon: <BeachAccess /> },
     { key: "AboutUs", icon: <Info /> }
   ];
@@ -127,16 +132,18 @@ export default function PersistentDrawerLeft(props) {
           <Typography variant="h6" className={classes.title}>
             {langStrings[currentPage]}
           </Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={currentLang === "ch"}
-                onChange={toggleLang}
-                color="secondary"
-              />
-            }
-            label="中文"
-          />
+          <Hidden xsUp>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={currentLang === "ch"}
+                  onChange={toggleLang}
+                  color="secondary"
+                />
+              }
+              label="中文"
+            />
+          </Hidden>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -190,12 +197,12 @@ export default function PersistentDrawerLeft(props) {
           [classes.contentShift]: open
         })}
       >
-      <div className={classes.headerSpace} />
-      <Router
-        langStrings={langStrings}
-        currentPage={currentPage}
-        changePage={changePage}
-      />
+        <div className={classes.headerSpace} />
+        <Router
+          langStrings={langStrings}
+          currentPage={currentPage}
+          changePage={changePage}
+        />
       </main>
     </div>
   );

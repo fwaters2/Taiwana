@@ -12,6 +12,9 @@ import AboutUs from "./Components/Extra/AboutUs";
 import Register from "./Components/Register/Register";
 import HelpMe from './Components/Squads/HelpMe'
 import HelpUs from "./Components/Squads/HelpUs";
+import Registered from "./Components/Squads/Registered";
+import Cost from "./Components/Cost";
+import HelpTabs from "./Components/Squads/HelpTabs";
 
 export default function Router(props) {
   const { currentPage, langStrings, changePage } = props;
@@ -34,6 +37,8 @@ export default function Router(props) {
       return <GoogleMap />;
     case "WhatToBring":
       return <WhatToBring />;
+    case "CurrentlyRegistered":
+      return <Registered changePage={changePage}/>
     case "AboutUs":
       return <AboutUs />;
     case "Register":
@@ -42,6 +47,10 @@ export default function Router(props) {
       return <HelpMe changePage={changePage}/>
     case "HelpUs":
       return <HelpUs changePage={changePage}/>
+    case "Cost":
+      return <Cost changePage={changePage} />
+    case "HelpTabs":
+      return <HelpTabs changePage={changePage} />
     default:
       return <div>Broken</div>;
   }

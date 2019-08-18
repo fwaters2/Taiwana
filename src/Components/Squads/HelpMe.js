@@ -23,11 +23,9 @@ export default function HelpMe(props) {
     newbieAss: false,
     contactInfo: "",
     description: ""
-
   });
   const { changePage } = props;
   const handleChange = (e, item) => {
-    console.log(values)
     updateValues({ ...values, [item]: e.target.value });
   };
 
@@ -53,31 +51,31 @@ export default function HelpMe(props) {
     result === "Success" ? changePage("Squads") : changePage("HelpMe");
     setOpenResult(false);
   }
+  const handleBack = () => {
+    changePage("Squads");
+  };
 
   const handleSubmit = () => {
-      console.log(values)
     handleClickOpenResult();
     const approved = () => {
       let newHelp = {
         Description: values.description,
-         ContactInfo: values.contactInfo,
+        ContactInfo: values.contactInfo,
         ass: {
           name: values.nameAss,
           gender: values.genderAss,
           newbie: values.newbieAss
-        },
+        }
       };
-      Firestore.firestore().collection("TaiwanaHelp").add(
-        newHelp
-      )
+      Firestore.firestore()
+        .collection("TaiwanaHelp")
+        .add(newHelp);
       changeResult("Success");
-      
     };
-    
+
     values.nameAss !== "" &&
     values.genderAss !== "" &&
     values.contactInfo !== ""
-
       ? approved()
       : changeResult("Error");
   };
@@ -87,7 +85,7 @@ export default function HelpMe(props) {
         <Paper>
           <List>
             <Typography variant="h5" align="center" gutterBottom>
-             I need 2!
+              I need 2!
             </Typography>
             <ListItem divider key="Ass">
               <HelpPlayer
@@ -100,20 +98,20 @@ export default function HelpMe(props) {
             </ListItem>
           </List>
           <TextField
-              label="How to contact you"
-              fullWidth
-              variant="filled"
-              value={values.contactInfo}
-              onChange={e => handleChange(e, "contactInfo")}
-            />
+            label="How to contact you"
+            fullWidth
+            variant="filled"
+            value={values.contactInfo}
+            onChange={e => handleChange(e, "contactInfo")}
+          />
           <TextField
-              label="(Optional) Short Description of yourself or who you'd want to play with"
-              fullWidth
-              rows="4"
-              multiline
-              value={values.description}
-              onChange={e => handleChange(e, "description")}
-            />
+            label="(Optional) Short Description of yourself or who you'd want to play with"
+            fullWidth
+            rows="4"
+            multiline
+            value={values.description}
+            onChange={e => handleChange(e, "description")}
+          />
           <Button
             variant="contained"
             color="primary"
@@ -122,11 +120,11 @@ export default function HelpMe(props) {
           >
             Submit Request
           </Button>
-            <Button
+          <Button
             variant="contained"
             color="secondary"
             fullWidth
-            onClick={()=>changePage("Squads")}
+            onClick={handleBack}
           >
             Back
           </Button>

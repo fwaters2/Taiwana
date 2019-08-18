@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, ListItemIcon, Button } from "@material-ui/core";
+import { Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, ListItemIcon, Button, ButtonGroup } from "@material-ui/core";
 import { Wc, AccessibilityNew } from "@material-ui/icons";
 
 export default function ReqDialog(props) {
@@ -31,7 +31,10 @@ export default function ReqDialog(props) {
                 <ListItemText primary="A Player New to Ultimate" />
             </ListItem>
         </List>
-        <Button variant='contained' onClick={()=>changePage("Squads")}>Looking for a teamate?</Button>
+        <ButtonGroup fullWidth>
+        <Button variant='contained' onClick={()=>changePage("Squads")}>Help Me!</Button>
+        <Button variant='contained' color='primary' onClick={handleClose}>Ready!</Button>
+        </ButtonGroup>
       </DialogContent>
     </Dialog>
   );
