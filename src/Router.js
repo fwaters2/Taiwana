@@ -15,6 +15,7 @@ import HelpUs from "./Components/Squads/HelpUs";
 import Registered from "./Components/Squads/Registered";
 import Cost from "./Components/Cost";
 import HelpTabs from "./Components/Squads/HelpTabs";
+import Success from "./Components/Register/Success";
 
 export default function Router(props) {
   const { currentPage, langStrings, changePage } = props;
@@ -51,7 +52,9 @@ export default function Router(props) {
       return <Cost changePage={changePage} />
     case "HelpTabs":
       return <HelpTabs changePage={changePage} />
+    case "Success":
+      return <Success changePage={changePage} />
     default:
-      return <div>Broken</div>;
+      return <div>Broken, tell Forrest to step his game up</div>;
   }
 }

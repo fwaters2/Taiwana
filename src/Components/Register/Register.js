@@ -23,7 +23,6 @@ export default function Register(props) {
   const [result, changeResult] = React.useState(
     "Sorry, Please enter ALL information"
   );
-  const[resultMessage, changeResultMessage] = "Please fill out your information"
   const [values, updateValues] = React.useState({
     squadName: "",
     nameCap: "",
@@ -40,13 +39,15 @@ export default function Register(props) {
   const handleChange = (e, item) => {
     updateValues({ ...values, [item]: e.target.value });
   };
-  // function handleMessage(error){
-  //   error==="Success"?
-  //   "Success! Please transfer ASAP :D":
-  //   error==="SameGender"?
-  //   "I'm sorry, each squad should have at least one guy and one lady!":
-  //   "Please fill out all the information"
-  // }
+  function handleMessage(error) {
+    error === "Success"
+      ? changeResult("Success! Please transfer ASAP :D")
+      : error === "SameGender"
+      ? changeResult(
+          "I'm sorry, each squad should have at least one guy and one lady!"
+        )
+      : changeResult("Please fill out all the information");
+  }
   const handleGenderCap = (event, newGender) => {
     updateValues({
       ...values,
@@ -102,7 +103,7 @@ export default function Register(props) {
   };
 
   function handleCloseResult() {
-    result === "Success" ? changePage("Squads") : changePage("Register");
+    result === "Success" ? changePage("Registered") : changePage("Register");
     setOpenResult(false);
   }
   function handleBack() {
@@ -113,6 +114,7 @@ export default function Register(props) {
     handleClickOpenResult();
     const approved = () => {
       let newSquad = {
+        Date: new Date(),
         SquadName: values.squadName,
         Paid: false,
         cap: {
@@ -134,7 +136,8 @@ export default function Register(props) {
       Firestore.firestore()
         .collection("TaiwanaReg")
         .add(newSquad);
-      changeResult("Success");
+      //handleMessage("Success");
+      changePage("Success");
     };
     values.squadName !== "" &&
     values.nameCap !== "" &&
@@ -146,10 +149,11 @@ export default function Register(props) {
     values.sizeCap !== "" &&
     values.sizeAss !== "" &&
     values.sizeNew !== ""
-      ? (values.genderCap === values.genderAss) === values.genderNew
-        ? changeResult("SameGender")
+      ? values.genderCap === values.genderAss &&
+        values.genderCap === values.genderNew
+        ? handleMessage("SameGender")
         : approved()
-      : changeResult("Error");
+      : handleMessage("Error");
   };
   return (
     <div style={{ width: "100vw" }}>
@@ -240,7 +244,7 @@ export default function Register(props) {
           <ResultDialog
             open={openResult}
             onClose={handleCloseResult}
-            result={resultMessage}
+            result={result}
           />
         </Paper>
       </Container>

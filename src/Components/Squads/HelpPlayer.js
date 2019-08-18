@@ -17,7 +17,6 @@ export default function HelpPlayer(props) {
   const newbie = "newbie"+player
   return (
     <Grid container alignItems='center' justify='space-between'>
-      
       <Grid item xs={12} sm={6}>
         <TextField
         fullWidth
@@ -52,7 +51,6 @@ export default function HelpPlayer(props) {
           <Checkbox checked={values[newbie]} onChange={handleNewbie} value="checkedA" />
         }
         label="New to Ultimate"
-        
       />
       </Grid>
     </Grid>

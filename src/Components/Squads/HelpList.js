@@ -4,8 +4,9 @@ import Group from "@material-ui/icons/Group";
 import {
   List,
   ListItem,
-  ListItemText,
-  ListItemIcon
+  ListItemIcon,
+  Typography,
+  Box
 } from "@material-ui/core";
 import { AccessibilityNew } from "@material-ui/icons";
 
@@ -47,9 +48,6 @@ export default function HelpList() {
       ")"
     );
   }
-  function Secondary(desc, cInfo) {
-    return desc + " " + cInfo;
-  }
 
   return (
     <List>
@@ -65,8 +63,9 @@ export default function HelpList() {
                   <AccessibilityNew />
                 </ListItemIcon>
               )}
-              <ListItemText
-                primary={
+              <Box>
+              <Typography color='primary'  variant ="h6">
+                {
                   help.cap
                     ? groupPrimary(
                         help.cap.name,
@@ -82,8 +81,14 @@ export default function HelpList() {
                         help.ass.newbie
                       )
                 }
-                secondary={Secondary(help.Description, help.ContactInfo)}
-              />
+              </Typography>
+              <Typography paragraph variant = 'caption'>
+              {help.Description}
+              </Typography>
+              <Typography color ='secondary' variant = 'subtitle2'>
+              {"Contact Me: " +help.ContactInfo}
+              </Typography>
+              </Box>
             </ListItem>
           ))
         : null}

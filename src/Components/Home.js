@@ -54,23 +54,43 @@ export default function InteractiveList(props) {
               </ListItem>
             ))}
           </List>
+          
+           
           <Fab
             variant="extended"
             onClick={() => changePage("Register")}
             style={{
               margin: 0,
               top: "auto",
-              width: "80%",
+              width: "40%",
               maxWidth: "500px",
               bottom: 20,
-              left: "50%",
-              transform: "translate(-50%, 0)",
+              left: 20,
+              
               position: "fixed"
             }}
             color="secondary"
           >
-            {langStrings.Register}
+            Register
           </Fab>
+          <Fab
+            variant="extended"
+            onClick={() => changePage("Squads")}
+            style={{
+              margin: 0,
+              top: "auto",
+              width: "40%",
+              maxWidth: "500px",
+              bottom: 20,
+              right: 20,
+             
+              position: "fixed"
+            }}
+            color="primary"
+          >
+            Find Squad
+          </Fab>
+         
         </div>
         <div className={classes.buttonSpace}/>
       </Container>

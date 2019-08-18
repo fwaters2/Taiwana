@@ -141,6 +141,7 @@ export default function HelpUs(props) {
           <TextField
             label="(Optional) Short Description of yourself or who you'd want to play with"
             fullWidth
+            variant="filled"
             rows="4"
             multiline
             value={values.description}

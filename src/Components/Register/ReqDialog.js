@@ -32,8 +32,9 @@ export default function ReqDialog(props) {
             </ListItem>
         </List>
         <ButtonGroup fullWidth>
-        <Button variant='contained' onClick={()=>changePage("Squads")}>Help Me!</Button>
-        <Button variant='contained' color='primary' onClick={handleClose}>Ready!</Button>
+        <Button variant='contained' color='secondary' onClick={handleClose}>Ready</Button>
+        <Button variant='contained' color='primary' onClick={()=>changePage("Squads")}>Find Squad</Button>
+        
         </ButtonGroup>
       </DialogContent>
     </Dialog>
