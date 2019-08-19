@@ -16,7 +16,7 @@ import {
 import { Info } from "@material-ui/icons";
 
 export default function ToggleButtons(props) {
-  const { handleChange, player, values, handleGender, handleSize, handleClickOpen } = props;
+  const { handleChange, player, values, handleGender, handleSize, handleClickOpen, langStrings } = props;
 
   const sizes = ["S", "M", "L", "XL", "2XL", "4XL"];
   const name = "name" + player;
@@ -28,7 +28,7 @@ export default function ToggleButtons(props) {
         <TextField
           fullWidth
           variant="outlined"
-          label="Name"
+          label={langStrings.Name}
           value={values[name]}
           onChange={e => handleChange(e, name)}
         />
@@ -60,7 +60,7 @@ export default function ToggleButtons(props) {
                 //ref={inputLabel}
                 htmlFor="outlined-age-simple"
               >
-                Shorts
+               {langStrings.Shorts}
               </InputLabel>
               <Select
                 value={values[size]}

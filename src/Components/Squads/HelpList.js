@@ -10,7 +10,8 @@ import {
 } from "@material-ui/core";
 import { AccessibilityNew } from "@material-ui/icons";
 
-export default function HelpList() {
+export default function HelpList(props) {
+  const {langStrings} = props
   const [data, setFBData] = React.useState(false);
   React.useEffect(() => {
     const unsubscribe = Firestore.firestore()
@@ -27,19 +28,19 @@ export default function HelpList() {
   }, []);
 
   function singlePrimary(name, gender, newbie) {
-    let funGender = gender === "Male" ? "Guy" : "Lady";
+    let funGender = gender === "Male" ? langStrings.Guy : langStrings.Lady;
     return (
-      (newbie ? "New " : "") + funGender + " needs a Squad! (" + name + ")"
+      (newbie ? langStrings.New : "") + funGender + langStrings.NeedsASquad + "(" + name + ")"
     );
   }
 
   function groupPrimary(cName, cGender, cNewbie, aName, aGender, aNewbie) {
     let needNew = !cNewbie && !aNewbie;
     let needGender =
-      cGender !== aGender ? "Person" : cGender === "Male" ? "Lady" : "Dude";
+      cGender !== aGender ? langStrings.Person : cGender === "Male" ? langStrings.Lady : langStrings.Guy;
     return (
-      "Need a " +
-      (needNew ? "New " : " ") +
+      langStrings.NeedA +
+      (needNew ? langStrings.New : " ") +
       needGender +
       " (" +
       cName +
@@ -86,7 +87,7 @@ export default function HelpList() {
               {help.Description}
               </Typography>
               <Typography color ='secondary' variant = 'subtitle2'>
-              {"Contact Me: " +help.ContactInfo}
+              {langStrings.ContactMe + help.ContactInfo}
               </Typography>
               </Box>
             </ListItem>

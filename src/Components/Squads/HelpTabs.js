@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function HelpTabs(props) {
-    const {changePage} =props
+    const {changePage, langStrings} =props
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -59,15 +59,15 @@ export default function HelpTabs(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Need 2" {...a11yProps(0)} />
-          <Tab label="Need 1" {...a11yProps(1)} />
+          <Tab label={langStrings.NeedTwo} {...a11yProps(0)} />
+          <Tab label={langStrings.NeedOne} {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <HelpMe changePage={changePage}/>
+        <HelpMe langStrings={langStrings} changePage={changePage}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-       <HelpUs changePage={changePage}/>
+       <HelpUs langStrings={langStrings} changePage={changePage}/>
       </TabPanel>
     </div>
   );

@@ -71,7 +71,7 @@ export default function InteractiveList(props) {
             }}
             color="secondary"
           >
-            Register
+            {langStrings.Register}
           </Fab>
           <Fab
             variant="extended"
@@ -88,7 +88,7 @@ export default function InteractiveList(props) {
             }}
             color="primary"
           >
-            Find Squad
+            {langStrings.FindTeammates}
           </Fab>
          
         </div>

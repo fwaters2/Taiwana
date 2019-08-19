@@ -27,33 +27,33 @@ export default function Router(props) {
     case "Schedule":
       return <Schedule langStrings={langStrings} />;
     case "Location":
-      return <Location />;
+      return <Location  langStrings={langStrings} />;
     case "Transportation":
-      return <Transportation />;
+      return <Transportation  langStrings={langStrings} />;
     case "HowToPlay":
       return <HowToPlay langStrings={langStrings} />;
     case "FAQ":
       return <FAQ langStrings={langStrings} />;
     case "Map":
-      return <GoogleMap />;
+      return <GoogleMap  langStrings={langStrings} />;
     case "WhatToBring":
-      return <WhatToBring />;
+      return <WhatToBring  langStrings={langStrings} />;
     case "CurrentlyRegistered":
-      return <Registered changePage={changePage}/>
+      return <Registered  langStrings={langStrings} changePage={changePage}/>
     case "AboutUs":
-      return <AboutUs />;
+      return <AboutUs  langStrings={langStrings} />;
     case "Register":
-      return <Register changePage={changePage}/>;
+      return <Register  langStrings={langStrings} changePage={changePage}/>;
     case "HelpMe":
-      return <HelpMe changePage={changePage}/>
+      return <HelpMe  langStrings={langStrings} changePage={changePage}/>
     case "HelpUs":
-      return <HelpUs changePage={changePage}/>
+      return <HelpUs  langStrings={langStrings} changePage={changePage}/>
     case "Cost":
-      return <Cost changePage={changePage} />
+      return <Cost  langStrings={langStrings} changePage={changePage} />
     case "HelpTabs":
-      return <HelpTabs changePage={changePage} />
+      return <HelpTabs  langStrings={langStrings} changePage={changePage} />
     case "Success":
-      return <Success changePage={changePage} />
+      return <Success  langStrings={langStrings} changePage={changePage} />
     default:
       return <div>Broken, tell Forrest to step his game up</div>;
   }

@@ -35,7 +35,7 @@ export default function Register(props) {
     sizeAss: "",
     sizeNew: ""
   });
-  const { changePage } = props;
+  const { changePage, langStrings } = props;
   const handleChange = (e, item) => {
     updateValues({ ...values, [item]: e.target.value });
   };
@@ -44,9 +44,9 @@ export default function Register(props) {
       ? changeResult("Success! Please transfer ASAP :D")
       : error === "SameGender"
       ? changeResult(
-          "I'm sorry, each squad should have at least one guy and one lady!"
+          langStrings.errOneGender
         )
-      : changeResult("Please fill out all the information");
+      : changeResult(langStrings.errFillAll);
   }
   const handleGenderCap = (event, newGender) => {
     updateValues({
@@ -161,18 +161,19 @@ export default function Register(props) {
         <Paper>
           <List>
             <Typography variant="h5" align="center" gutterBottom>
-              Squad Registration
+              {langStrings.SquadRegistration}
             </Typography>
             <ButtonGroup variant="contained" fullWidth size="small">
               <Button color="primary" onClick={handleClickOpenReq}>
-                Squad Req.
+                {langStrings.SquadReq}
               </Button>
               <Button color="secondary" onClick={handleClickOpen}>
-                Size Info
+                {langStrings.SizeInfo}
               </Button>
             </ButtonGroup>
-            <ShortsDialog open={open} onClose={handleClose} />
+            <ShortsDialog langStrings={langStrings} open={open} onClose={handleClose} />
             <ReqDialog
+              langStrings={langStrings}
               changePage={changePage}
               open={openReq}
               onClose={handleCloseReq}
@@ -185,15 +186,16 @@ export default function Register(props) {
                   fontWeight: "bold"
                 }
               }}
-              label="Squad Name"
+              label={langStrings.SquadName}
               fullWidth
               variant="filled"
               value={values.squadName}
               onChange={e => handleChange(e, "squadName")}
             />
-            <FormHelperText>Captain</FormHelperText>
+            <FormHelperText>{langStrings.Captain}</FormHelperText>
             <ListItem divider key="Cap">
               <Player
+              langStrings={langStrings}
                 handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
@@ -202,9 +204,10 @@ export default function Register(props) {
                 player="Cap"
               />
             </ListItem>
-            <FormHelperText>Assistant Captain</FormHelperText>
+            <FormHelperText>{langStrings.AssCaptain}</FormHelperText>
             <ListItem divider key="Ass">
               <Player
+               langStrings={langStrings}
                 handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
@@ -213,9 +216,10 @@ export default function Register(props) {
                 player="Ass"
               />
             </ListItem>
-            <FormHelperText>New Player</FormHelperText>
+            <FormHelperText>{langStrings.NewPlayer}</FormHelperText>
             <ListItem key="New">
               <Player
+               langStrings={langStrings}
                 handleClickOpen={handleClickOpen}
                 values={values}
                 handleChange={handleChange}
@@ -231,7 +235,7 @@ export default function Register(props) {
             fullWidth
             onClick={handleSubmit}
           >
-            Submit Squad
+            {langStrings.SubmitSquad}
           </Button>
           <Button
             variant="contained"
@@ -239,9 +243,10 @@ export default function Register(props) {
             fullWidth
             onClick={handleBack}
           >
-            Back
+            {langStrings.Back}
           </Button>
           <ResultDialog
+          langStrings={langStrings}
             open={openResult}
             onClose={handleCloseResult}
             result={result}

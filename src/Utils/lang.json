@@ -31,7 +31,7 @@
       { "Q": "How?", "A": "Sign-up or find your squad here!", "page": "Squads" }
     ],
     
-    "FindTeammates": "Find Teammates",
+    "FindTeammates": "Find Squad",
     "SubjectToChange": "SUBJECT TO CHANGE",
     "ExtraRules": "Do you love rules??? Click",
     "Here": "Here",
@@ -46,7 +46,62 @@
         "A": "We are flexible with definitions. New could be someone who's never played before or never played in an organized game. If unsure, let us know your experience and we'll do our best to help out!!"
       }
     ],
-    "NewQuestion": "Have a Question not answered here? Post it "
+    "NewQuestion": "Have a Question not answered here? Post it ",
+  
+  
+    "SquadRequirements":"Squad Requirements",
+    "OneGender":"One of Each Gender",
+    "NewToUltimate":"A Player New to Ultimate",
+    "Ready":"Ready",
+    "SquadRegistration":"Squad Registration",
+    "SquadReq":"Squad Req.",
+    "SizeInfo":"Size Info",
+    "SizingChart":"Sizing Chart",
+    "SquadName":"Squad Name",
+    "Captain":"Captain",
+    "Name":"Name",
+    "Shorts":"Shorts",
+    "AssCaptain":"Assistant Captain",
+    "NewPlayer":"New Player",
+    "SubmitSquad":"Submit Squad",
+    "Back":"Back",
+    "Success":"Success!",
+    "successSquad":"You're Squad has been successfully registered for the tournament!",
+    "TransferPlease":"To guarantee your spot, please transfer the amount ($1,000) as soon as possible",
+    "HowToTransfer":"How to Transfer",
+    "SeeList":"See the list of Squads",
+    "errOneGender":"I'm sorry, each squad should have at least one guy and one lady!",
+    "errFillAll":"Please fill out all the information",
+    "SignUpHere":"Sign-up or find your squad here!",
+    "CreateListing":"Create listing",
+    "NeedOne":"need 1",
+    "NeedTwo":"need 2",
+    "SinglePersonLooking":"Single person looking for squad",
+    "SquadLooking":"Squad looking for someone",
+    "Newbie":"New to Ultimate",
+    "HowToContactYou":"How to contact you",
+    "ShortDescription":"(Optional) Short description of yourself or squad",
+    "SubmitListing":"Submit Listing",
+    "errFillNameGender":"Error: Be sure you filled in your name, gender, AND how to contact you!",
+      
+    "Guy":"Guy",
+    "Lady":"Lady",
+    "New":"New ",
+    "NeedsASquad":" needs a squad!",
+    "Person":"Person",
+    "NeedA":"Need a ",
+    "ContactMe":"Contact Me:",
+      
+    "BasicInfoEtc":"Basic rules: No running with the disc, and score in the touchdown area by passing to your teammates!",
+    "NewBeachRules":"Some new beach rules for the amateurs/proficients:",
+    "GenderRatioInfo":"4:1 or 3:2 gender ratio (defense decides)",
+    "UpsideDownPulls":"Upside down pulls",
+    "EndzoneTwoPts":"Endzone to endzone is 2 points",
+    "DroppedPullEtc":"A dropped pull is fine if you were attempting a really cool catch or sick layout (really)",
+    "LastYearEtc":"Last year we started at about 2:30pm and played 3-4 games of ~30mins each. Could change depending on numbers.",
+    "ExampleSchedule":"Example Schedule:",
+    "YouAndTwoFriends":"You and your 2 friends are 'Squad B'. Your first game you team up with Squads 'A' and 'C' to play a game. Then in your second game you will team up with Squads 'D' and 'E'"
+  
   },
   "ch": {
     "Taiwana": "台灣啊",
@@ -62,12 +117,12 @@
    
     "FAQ": "常問問題",
     "Map": "地圖",
-    "Cost": "Money Info",
+    "Cost": "錢的資訊",
     "WhatToBring":"需要帶些什麼",
-    "CurrentlyRegistered":"Currently Registered",
+    "CurrentlyRegistered":"已報名",
     "AboutUs": "關於我們",
 
-    "FindTeammates": "找到隊友",
+    "FindTeammates": "尋找隊友",
     "SubjectToChange": "可調整的",
     "ExtraRules": "你喜歡規則嗎？ 點擊 ",
     "Here": "這裡",
@@ -75,16 +130,16 @@
     "AboutText": "夏天來了，你們準備好要來場沙灘飛盤了嗎！快和幾個朋友一起來旗津參加比賽吧。 這次的比賽形式會讓大家以不同的方式交替組隊，而你所需要做的只是組一個3人小隊（包括你自己）一起參加。 3人包含： 1個好奇寶寶：從來沒玩過競技飛盤，但有興趣及願意嘗試。 1個愛好者：已玩了一陣子競技飛盤，但對於比賽還似懂非懂。 1個菁英份子：有知識及技巧可以與大家分享的人。 最後，請注意每隊需至少有一位女性選手（不論程度） 已經知道要找哪幾個朋友一起參加了嗎？ 小隊參賽費用（非單人）：1000元（6/8前報名為900元，快開始召集吧） 而你會得到： - 整個下午的飛盤時光 - 可正反兩穿的無袖上衣 - 前幾名的獎品 - 水及冰塊 個人報名費用：350元（若我們沒辦法幫你找到可參加的隊伍，費用將全數退還） 額外細節（重點是你已瞭解上述訊息，以下若太複雜可略過）： 本次的活動目標一為推廣競技飛盤讓更多人認識，二為能和各個不同選手一起組隊。所以我們將介紹一個新型式的比賽，每隊每場都會與不同的小隊組隊，進行5:5的比賽。範例如下： - 你的小隊（3人）與其他兩小隊（Bob & Marla，各3人）組成一隊對上其他三小隊（Steve, John & Debbie)所組成的隊伍。贏的那一方，3小隊各得一分 - 你的小隊在下一場比賽與其他2小隊組隊，對上其他3小隊所組成的隊伍。贏的那一方，3小隊再各得一分 - 重複相同賽制 -在所有的比賽結束後，我們會結算個小隊的分數，得到最多分者為最後贏家",
     "HomeStrings":[
       { "Q": "什麼?", "A": "海邊飛盤!", "page": "HowToPlay" },
-      { "Q": "Cost?", "A": "Early bird: $1,000/squad. Click here to see what's included!", "page":"Cost"},
+      { "Q": "花費？", "A": "早鳥價：一個小隊1000台幣。點這裡看價錢包含了什麼！", "page":"Cost"},
       { "Q": "什麼時候?", "A": "9月13日星期五", "page": "Schedule" },
       { "Q": "哪裡?", "A": "旗津海邊, 高雄", "page": "Location" },
       {
         "Q": "為什麼?",
-        "A": "Play/Learn Ultimate, meet new people, and enjoy the beach!",
+        "A": "邊玩邊學飛盤，認識新朋友，享受陽光沙灘比基尼！",
         "page": "HowToPlay"
       },
-      { "Q": "誰?", "A": "Check for yourself!", "page": "CurrentlyRegistered" },
-      { "Q": "怎麼樣?", "A": "Sign-up or find your squad here!", "page": "Squads" }
+      { "Q": "誰?", "A": "自己進來看看！", "page": "CurrentlyRegistered" },
+      { "Q": "怎麼樣?", "A": "報名或是來找小隊友！", "page": "Squads" }
     ],
     
     "Questions": [
@@ -97,6 +152,59 @@
           "A": "新玩家可能是以前從未玩過或從未在有組織的遊戲中玩過的人。 如果不確定，請告訴我們您的經驗，我們會盡力幫助您"
         }
       ],
-    "NewQuestion": "你有新問題嗎？ 問"
+    "NewQuestion": "你有新問題嗎？ 問",
+
+
+
+    "SquadRequirements":"小隊需求",
+"OneGender":"男女至少各一人",
+"NewToUltimate":"一個飛盤新手",
+"Ready":"準備好了",
+"SquadRegistration":"小隊報名",
+"SquadReq":"小隊需求",
+"SizeInfo":"尺寸資訊",
+"SizingChart":"尺寸表",
+"SquadName":"小隊名",
+"Captain":"隊長",
+"Name":"姓名",
+"Shorts":"短褲",
+"AssCaptain":"副隊長",
+"NewPlayer":"新手",
+"SubmitSquad":"提交小隊",
+"Back":"回主頁",
+"Success":"成功！",
+"successSquad":"你的小隊已報名成功！",
+"TransferPlease":"請儘快繳交台幣1000元以確保參加資格",
+"HowToTransfer":"如何轉帳",
+"SeeList":"查看小隊名單",
+"errOneGender":"抱歉，每一小隊需至少一名男生及女生",
+"errFillAll":"請確實填寫所有資訊爛",
+"SignUpHere":"報名或是來找小隊友！",
+"CreateListing":"建立名單",
+"NeedOne":"需要一名隊友",
+"NeedTwo":"需要兩名隊友",
+"SinglePersonLooking":"我是邊緣人，需要兩名隊友",
+"SquadLooking":"我們是未成形的小隊，需要一名豬隊友",
+"Newbie":"初來乍到的新手",
+"HowToContactYou":"如何聯繫你",
+"ShortDescription":"（選擇性填寫）簡短的敘述一下你或是你的小隊",
+"SubmitListing":"提交名單",
+"errFillNameGender":"錯誤：請確認已填寫姓名、性別以及如何聯繫你！",
+"Guy":"男生",
+"Lady":"女生",
+"New":"新手",
+"NeedsASquad":"需要一個小隊！",
+"Person":"一人",
+"NeedA":"需要",
+"ContactMe":"聯絡我:",
+"BasicInfoEtc":"基本規則：不可以帶著飛盤跑步。需要將飛盤傳給在的得分圈的隊員以得分。",
+"NewBeachRules":"一些新的沙灘飛盤規則給一些業餘和專業的飛盤手",
+"GenderRatioInfo":"4男一女或是三男兩女的性別比（由防守方決定）",
+"UpsideDownPulls":"開盤只限丟顛倒盤",
+"EndzoneTwoPts":"從一得分區直接丟到另一得分區，可得兩分",
+"DroppedPullEtc":"",
+"LastYearEtc":"",
+"ExampleSchedule":"",
+"YouAndTwoFriends":""
   }
 }

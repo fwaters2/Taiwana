@@ -2,25 +2,24 @@ import React from "react";
 import { Typography, Button, Container } from "@material-ui/core";
 
 export default function Success(props) {
-  const { changePage } = props;
+  const { changePage, langStrings } = props;
   return (
     <div style={{ width: "100vw" }}>
       <Container style={{ padding: "0" }} maxWidth="sm">
         <Typography variant="h4" align="center" gutterBottom>
-          Success!
+         {langStrings.Success}
         </Typography>
         <Typography variant="body1" paragraph>
-          You're Squad has been successfully registered for the tournament!
+          {langStrings.successSquad}
         </Typography>
         <Typography variant="body1" paragraph>
-          To guarantee your spot, please transfer the amount ($1,000) as soon as
-          possible.
+          {langStrings.TransferPlease}
         </Typography>
         <Button onClick={() => changePage("Cost")} color="primary">
-          How to Transfer
+          {langStrings.HowToTransfer}
         </Button>
         <Button onClick={() => changePage("Registered")} color="primary">
-          See the list of Squads
+          {langStrings.SeeList}
         </Button>
       </Container>
     </div>

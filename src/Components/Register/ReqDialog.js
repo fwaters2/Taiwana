@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent, List, ListItem, ListItemText, ListI
 import { Wc, AccessibilityNew } from "@material-ui/icons";
 
 export default function ReqDialog(props) {
-  const { onClose, open, changePage } = props;
+  const { onClose, open, changePage, langStrings } = props;
 
   function handleClose() {
     onClose();
@@ -15,25 +15,25 @@ export default function ReqDialog(props) {
       aria-labelledby="simple-dialog-title"
       open={open}
     >
-      <DialogTitle id="simple-dialog-title" align='center'>Squad Requirements</DialogTitle>
+      <DialogTitle id="simple-dialog-title" align='center'>{langStrings.SquadRequirements}</DialogTitle>
       <DialogContent>
         <List>
             <ListItem>
                 <ListItemIcon>
                     <Wc />
                 </ListItemIcon>
-                <ListItemText primary="One of Each Gender" />
+                <ListItemText primary={langStrings.OneGender} />
             </ListItem>
             <ListItem>
             <ListItemIcon>
                     <AccessibilityNew />
                 </ListItemIcon>
-                <ListItemText primary="A Player New to Ultimate" />
+                <ListItemText primary={langStrings.NewToUltimate} />
             </ListItem>
         </List>
         <ButtonGroup fullWidth>
-        <Button variant='contained' color='secondary' onClick={handleClose}>Ready</Button>
-        <Button variant='contained' color='primary' onClick={()=>changePage("Squads")}>Find Squad</Button>
+        <Button variant='contained' color='secondary' onClick={handleClose}>{langStrings.Ready}</Button>
+        <Button variant='contained' color='primary' onClick={()=>changePage("Squads")}>{langStrings.FindTeammates}</Button>
         
         </ButtonGroup>
       </DialogContent>

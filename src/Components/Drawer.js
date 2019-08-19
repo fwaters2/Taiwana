@@ -132,7 +132,7 @@ export default function PersistentDrawerLeft(props) {
           <Typography variant="h6" className={classes.title}>
             {langStrings[currentPage]}
           </Typography>
-          <Hidden xsUp>
+          {/* <Hidden xsUp> */}
             <FormControlLabel
               control={
                 <Switch
@@ -143,7 +143,7 @@ export default function PersistentDrawerLeft(props) {
               }
               label="中文"
             />
-          </Hidden>
+          {/* </Hidden> */}
         </Toolbar>
       </AppBar>
       <Drawer

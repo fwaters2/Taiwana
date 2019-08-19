@@ -11,7 +11,7 @@ import {
 
 export default function HelpPlayer(props) {
   
-  const {handleChange, player, values, handleGender, handleNewbie} = props
+  const {handleChange, player, values, handleGender, handleNewbie, langStrings} = props
   const name= "name"+player
   const gender= "gender"+player
   const newbie = "newbie"+player
@@ -21,7 +21,7 @@ export default function HelpPlayer(props) {
         <TextField
         fullWidth
         variant='outlined'
-          label="Name"
+          label={langStrings.Name}
           value={values[name]}
           onChange={(e)=>handleChange(e, name)}
         />
@@ -50,7 +50,7 @@ export default function HelpPlayer(props) {
         control={
           <Checkbox checked={values[newbie]} onChange={handleNewbie} value="checkedA" />
         }
-        label="New to Ultimate"
+        label={langStrings.NewToUltimate}
       />
       </Grid>
     </Grid>

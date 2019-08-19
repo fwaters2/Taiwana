@@ -30,7 +30,7 @@ export default function HelpUs(props) {
     contactInfo: "",
     description: ""
   });
-  const { changePage } = props;
+  const { changePage, langStrings } = props;
   const handleChange = (e, item) => {
     updateValues({ ...values, [item]: e.target.value });
   };
@@ -110,10 +110,11 @@ export default function HelpUs(props) {
         <Paper>
           <List>
             <Typography variant="h5" align="center" gutterBottom>
-              Looking for 1 more
+              {langStrings.SquadLooking}
             </Typography>
             <ListItem divider key="Cap">
               <HelpPlayer
+              langStrings={langStrings}
                 values={values}
                 handleChange={handleChange}
                 handleGender={handleGenderCap}
@@ -123,6 +124,7 @@ export default function HelpUs(props) {
             </ListItem>
             <ListItem divider key="Ass">
               <HelpPlayer
+              langStrings={langStrings}
                 values={values}
                 handleChange={handleChange}
                 handleGender={handleGenderAss}
@@ -132,14 +134,14 @@ export default function HelpUs(props) {
             </ListItem>
           </List>
           <TextField
-            label="How to contact you"
+            label={langStrings.HowToContactYou}
             fullWidth
             variant="filled"
             value={values.contactInfo}
             onChange={e => handleChange(e, "contactInfo")}
           />
           <TextField
-            label="(Optional) Short Description of yourself or who you'd want to play with"
+            label={langStrings.ShortDescription}
             fullWidth
             variant="filled"
             rows="4"
@@ -153,7 +155,7 @@ export default function HelpUs(props) {
             fullWidth
             onClick={handleSubmit}
           >
-            Submit Request
+            {langStrings.SubmitListing}
           </Button>
           <Button
             variant="contained"
@@ -161,9 +163,10 @@ export default function HelpUs(props) {
             fullWidth
             onClick={handleBack}
           >
-            Back
+           {langStrings.Back}
           </Button>
           <HelpMeDialog
+          langStrings={langStrings}
             open={openResult}
             onClose={handleCloseResult}
             result={result}

@@ -21,7 +21,7 @@ export default function InteractiveList(props) {
             <Typography>{langStrings.FindTeammates}</Typography>
           </Toolbar>
         </AppBar>
-        <HelpList />
+        <HelpList langStrings={langStrings}/>
         <Fab
             variant="extended"
             onClick={() => changePage("HelpTabs")}
@@ -37,7 +37,7 @@ export default function InteractiveList(props) {
             }}
             color="primary"
           >
-            Create Listing
+            {langStrings.CreateListing}
           </Fab>
           <div className={classes.buttonSpace}/>
       </Container>
